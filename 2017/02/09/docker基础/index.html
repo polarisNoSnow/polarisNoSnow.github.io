@@ -100,17 +100,18 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="环境准备系统环境：centos7安装：  $ yum install docker  开启服务：service docker start测试：docker run hello-world (或是docker verison) 镜像测试搜索本地镜像：docker images查看源镜像库有关java方面的镜像并且收藏数大于10：docker search -s 10 java下载镜像：docker">
+<meta name="keywords" content="linux,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/04/04/hello-world/index.html">
+<meta property="og:title" content="docker基础">
+<meta property="og:url" content="http://yoursite.com/2017/02/09/docker基础/index.html">
 <meta property="og:site_name" content="星辰阁">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="环境准备系统环境：centos7安装：  $ yum install docker  开启服务：service docker start测试：docker run hello-world (或是docker verison) 镜像测试搜索本地镜像：docker images查看源镜像库有关java方面的镜像并且收藏数大于10：docker search -s 10 java下载镜像：docker">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-07T10:51:07.146Z">
+<meta property="og:updated_time" content="2019-05-07T11:55:21.651Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="docker基础">
+<meta name="twitter:description" content="环境准备系统环境：centos7安装：  $ yum install docker  开启服务：service docker start测试：docker run hello-world (或是docker verison) 镜像测试搜索本地镜像：docker images查看源镜像库有关java方面的镜像并且收藏数大于10：docker search -s 10 java下载镜像：docker">
 
 
 
@@ -118,7 +119,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2018/04/04/hello-world/">
+  <link rel="canonical" href="http://yoursite.com/2017/02/09/docker基础/">
 
 
 
@@ -128,7 +129,7 @@
   };
 </script>
 
-  <title>Hello World | 星辰阁</title>
+  <title>docker基础 | 星辰阁</title>
   
 
 
@@ -356,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/04/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/09/docker基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="北辰不落雪">
@@ -373,7 +374,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">docker基础
 
               
             
@@ -399,7 +400,7 @@
                 
               
 
-              <time title="创建时间：2018-04-04 13:39:15" itemprop="dateCreated datePublished" datetime="2018-04-04T13:39:15+08:00">2018-04-04</time>
+              <time title="创建时间：2017-02-09 21:14:58" itemprop="dateCreated datePublished" datetime="2017-02-09T21:14:58+08:00">2017-02-09</time>
             
 
             
@@ -416,11 +417,29 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-07 18:51:07" itemprop="dateModified" datetime="2019-05-07T18:51:07+08:00">2019-05-07</time>
+                <time title="修改时间：2019-05-07 19:55:21" itemprop="dateModified" datetime="2019-05-07T19:55:21+08:00">2019-05-07</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -434,8 +453,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/04/04/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/04/hello-world/" itemprop="commentCount"></span>
+                <a href="/2017/02/09/docker基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/09/docker基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -463,15 +482,38 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>系统环境：centos7<br>安装：</p>
+<blockquote>
+<p>$ yum install docker</p>
+</blockquote>
+<p>开启服务：service docker start<br>测试：docker run hello-world (或是docker verison)</p>
+<h1 id="镜像测试"><a href="#镜像测试" class="headerlink" title="镜像测试"></a>镜像测试</h1><p>搜索本地镜像：docker images<br>查看源镜像库有关java方面的镜像并且收藏数大于10：docker search -s 10 java<br>下载镜像：docker pull *** （直接运行某个镜像的时候也会自动下载）</p>
+<p>后台运行learn/tutorial镜像并执行sh脚本(脚本含义：每秒输出一次hello world)<br>docker run -d learn/tutorial /bin/sh -c “while true; do echo hello world; sleep 1; done”</p>
+<p>docker run -t -i runoob/ubuntu:v2 /bin/bash  </p>
+<p>docker ps 查询正在运行的镜像</p>
+<p>从上面的查询的ID来查看此镜像输出的日志<br>docker logs ID</p>
+<p>停止镜像<br>docker stop ID</p>
+<h1 id="项目实战-注意各个版本"><a href="#项目实战-注意各个版本" class="headerlink" title="项目实战(注意各个版本)"></a>项目实战(注意各个版本)</h1><p>docker容器环境的安装</p>
+<h2 id="centos的安装"><a href="#centos的安装" class="headerlink" title="centos的安装"></a>centos的安装</h2><p>docker pull centos<br>国外的docker Hub可能比较慢，使用下面的命令修改 daemon.json文件，会添加一个registry-mirrors：注册服务器镜像(使用daocloud的，默认为docker Hub)<br>curl -sSL <a href="https://get.daocloud.io/daotools/set_mirror.sh" target="_blank" rel="noopener">https://get.daocloud.io/daotools/set_mirror.sh</a> | sh -s <a href="http://ce611378.m.daocloud.io" target="_blank" rel="noopener">http://ce611378.m.daocloud.io</a></p>
+<p>查看本地镜像列表<br>docker images</p>
+<h2 id="操作centos"><a href="#操作centos" class="headerlink" title="操作centos"></a>操作centos</h2><p>进入系统：docker run -i -t centos /bin/bash<br>新建文件：mkdir test<br>！！！然后更新yum update(ubuntu的系统是 apt-get update)——–教程中只是做一个修改，直接mkdir<br>！！！然后exit退出系统———-退出系统，容器会停止，所以在此之前用此账户再开一个窗口 执行下面的操作<br>(后来发现docker ps -a 可以查询到所有的启动过容器，可以获取到ID。<br> docker start ID 启动停止的镜像<br> docker attach ID 进入镜像中            ###exit之后镜像依旧挂掉<br> 或是 docker exec -i -t ID  /bin/bash   ###这种方式镜像在后台存活<br>)</p>
+<h2 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h2><p>docker commit -m=”第一次提交” -a=”polaris” 425cef90ab3f polaris/centos:v1<br>-m: 描述信息<br>-a: 作者<br>425cef90ab3f：ID<br>polaris/centos:v1 :创建的目标镜像名+tag</p>
+<p>重新进入刚刚提交的镜像<br>docker run -i -t polaris/centos:v1 /bin/bash<br>之前所做的操作都存在</p>
+<h3 id="如果你想推送你的镜像到注册中心"><a href="#如果你想推送你的镜像到注册中心" class="headerlink" title="***如果你想推送你的镜像到注册中心"></a>***如果你想推送你的镜像到注册中心</h3><p>首先需要在docker官网创建一个Repository<br>如果你本地的名字和创建的不一样，会提示未授权，使用docker tag local-images:v1 dockerHub-images:v1<br>a、docker login 登录docker<br>b、docker push <em>**</em> 然后push你的本地镜像（很多操作和git类似）</p>
+<p>快速构建<br>1、使用docker bulid来构建（会读取dockerfile文件），推荐！更快速简洁<br>2、先pull然后修改之后commit（方法一的底层也是通过这种方式）</p>
+<p>####** 注意 **</p>
+<h2 id="1、从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry-Mirror服务"><a href="#1、从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry-Mirror服务" class="headerlink" title="1、从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry Mirror服务"></a>1、从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry Mirror服务</h2><p><a href="http://blog.daocloud.io/how-to-master-docker-image/" target="_blank" rel="noopener">http://blog.daocloud.io/how-to-master-docker-image/</a></p>
+<h2 id="2、挂载磁盘"><a href="#2、挂载磁盘" class="headerlink" title="2、挂载磁盘"></a>2、挂载磁盘</h2><p>docker run -it -v /home/download:/mnt polaris/centos:v1 /bin/bash<br>将宿主的下载文件夹 挂载 到docker容器polaris镜像中的docker下<br>但如果你想 在已经启动的docker镜像中挂载 请参考（还没试过）<a href="http://www.open-open.com/lib/view/open1421996521062.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1421996521062.html</a></p>
+<p>######3、搭建基本环境(JDK8 + tomcat7)<br>a, 现在宿主机器里wget下资源(JDK8+tomcat7的tar包),坑爹的JDK7官网已经不支持游客下载<br>b, 将宿主磁盘挂载到docker镜像mnt目录下，解压然后cp到自己定义的目录<br>c, jdk: 修改/etc/profile，添加路径保存，然后source /etc/profile更新</p>
+<p>######4、查看容器相关信息（主要是查看网络配置，容器里面很多命令都没有）<br>docker inspect a7e0139b5940</p>
+<p>######5、端口映射<br>docker run -i -t -p 5000:8080 polaris/centos:v1 /bin/bash （交互型）<br>docker run -d -i -t -p 5000:8080 polaris/centos:v1 （后台型）</p>
+<p>######6、阿里云（以本人为例子）<br>下载<br>docker pull registry.cn-hangzhou.aliyuncs.com/polarisnosnow/polaris:v2</p>
+<p>上传<br>docker login –username=<em>**</em>  registry.cn-hangzhou.aliyuncs.com<br>docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/polarisnosnow/polaris:[镜像版本号]<br>docker push registry.cn-hangzhou.aliyuncs.com/polarisnosnow/polaris:[镜像版本号]</p>
+<p>######7、搭建注册服务器<br>docker pull registry<br>docker run -p 5000:5000 -d -i -t registry<br>之后就可以直接commit&amp;push了<br>docker commit cid 127.0.0.1:5000/my_image:v1<br>docker push 127.0.0.1:5000/my_image:v1</p>
+<p>可以使用docker API查看库中结果<br><a href="http://127.0.0.1:5000/v2/_catalog" target="_blank" rel="noopener">http://127.0.0.1:5000/v2/_catalog</a><br><a href="http://127.0.0.1:5000/v2/my_image/tag/list" target="_blank" rel="noopener">http://127.0.0.1:5000/v2/my_image/tag/list</a></p>
+<p>注意客户端在/etc/docker/daemon.json 中添加{ “insecure-registries”:[“127.0.0.1:5000”]}<br>安全访问（默认走的https）</p>
+<p>######8、docker管理界面<br>dockerUI:只能用于单机，单功能齐全<br>构建脚本：docker run -d -p 9000:9000 –privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker</p>
+<p>shipyard:适合集群，各种资源分配，性能检测等<br>/etc/sysconfig/docker中添加对2375的监听 OPTIONS=”-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock”<br>shipyard构建脚本（启动的容器较多） curl -s <a href="https://shipyard-project.com/deploy" target="_blank" rel="noopener">https://shipyard-project.com/deploy</a> | bash -s<br>Username: admin Password: shipyard<br>或者：docker run –rm -v /var/run/docker.sock:/var/run/docker.sock shipyard/deploy start</p>
 
       
     </div>
@@ -506,7 +548,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="http://yoursite.com/2018/04/04/hello-world/" title="Hello World">http://yoursite.com/2018/04/04/hello-world/</a>
+    <a href="http://yoursite.com/2017/02/09/docker基础/" title="docker基础">http://yoursite.com/2017/02/09/docker基础/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -517,6 +559,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
 
       
       
@@ -526,18 +576,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/15/keepalived笔记/" rel="next" title="keepalived笔记">
-                <i class="fa fa-chevron-left"></i> keepalived笔记
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/12/霍爱简评/" rel="prev" title="霍爱简评">
-                霍爱简评 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/26/Linux初阶/" rel="prev" title="linux初级">
+                linux初级 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -746,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#镜像测试"><span class="nav-number">2.</span> <span class="nav-text">镜像测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目实战-注意各个版本"><span class="nav-number">3.</span> <span class="nav-text">项目实战(注意各个版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#centos的安装"><span class="nav-number">3.1.</span> <span class="nav-text">centos的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作centos"><span class="nav-number">3.2.</span> <span class="nav-text">操作centos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交修改"><span class="nav-number">3.3.</span> <span class="nav-text">提交修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果你想推送你的镜像到注册中心"><span class="nav-number">3.3.1.</span> <span class="nav-text">***如果你想推送你的镜像到注册中心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry-Mirror服务"><span class="nav-number">3.4.</span> <span class="nav-text">1、从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry Mirror服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、挂载磁盘"><span class="nav-number">3.5.</span> <span class="nav-text">2、挂载磁盘</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -906,9 +952,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2018/04/04/hello-world/";
-    this.page.identifier = "2018/04/04/hello-world/";
-    this.page.title = 'Hello World';
+    this.page.url = "http://yoursite.com/2017/02/09/docker基础/";
+    this.page.identifier = "2017/02/09/docker基础/";
+    this.page.title = 'docker基础';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
