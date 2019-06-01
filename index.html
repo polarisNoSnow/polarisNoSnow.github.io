@@ -266,7 +266,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
 
   </li>
         
@@ -304,7 +304,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
 
   </li>
 
@@ -985,7 +985,7 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-07 19:48:16" itemprop="dateModified" datetime="2019-05-07T19:48:16+08:00">2019-05-07</time>
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -1053,7 +1053,17 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
         
           
             <p>
-              a、keepalived安装(教程参考：https://www.cnblogs.com/Richardzhu/p/4202416.html )1.依赖安装c++相关：yum -y install gcc-c++openssl: yum -y install openssl-devel2./confi
+              keepalived教程参考：https://www.cnblogs.com/Richardzhu/p/4202416.html )
+环境配置
+基础依赖
+
+c++相关
+
+$ yum -y install gcc-c++
+
+openssl
+
+$ yum -y install openssl-devel
               ...
             </p>
           <!--noindex-->
@@ -1181,7 +1191,7 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-07 19:54:23" itemprop="dateModified" datetime="2019-05-07T19:54:23+08:00">2019-05-07</time>
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -1249,7 +1259,36 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
         
           
             <p>
-              表/集合、行/文档、字段/域新建连接：mongod.exe ip:port/database -u user -p password基础查询：show dbs;use database;show tables;db.student.find({name:{$type : 2}},{}).sort({
+              Mongodb基础映射关系
+
+
+
+关系型数据库
+Mongodb
+
+
+
+
+表
+集合
+
+
+行数据
+文档
+
+
+字段
+域
+
+
+
+基础操作新建连接
+
+mongod.exe ip:port/database -u user -p password
+
+基础查询
+
+show dbsuse databaseshow 
               ...
             </p>
           <!--noindex-->
@@ -1377,7 +1416,7 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-09 22:22:00" itemprop="dateModified" datetime="2019-05-09T22:22:00+08:00">2019-05-09</time>
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -1445,8 +1484,11 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
         
           
             <p>
-              EQUI JOIN: join、outer joinSEMI JOIN: from a,b
-索引//存储过程至批量数据导入create PROCEDURE bigData_test(IN num int,IN begin_num int)BEGIN     DECLARE i INT DEFAULT
+              前言EQUI JOIN: join、outer joinSEMI JOIN: from a,b
+索引
+存储过程至批量数据导入
+
+create PROCEDURE bigData_test(IN num int,IN begin_num int)BEGIN	 DECLARE i INT DEFAULT
               ...
             </p>
           <!--noindex-->
@@ -1574,7 +1616,7 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-09 22:22:00" itemprop="dateModified" datetime="2019-05-09T22:22:00+08:00">2019-05-09</time>
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -1642,13 +1684,217 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
         
           
             <p>
-              跨N库分页（如果分为ABC三库，每页显示20条数据，数据量足够多）方法一：全局视野法如果取第一页，则三个库都取前20条，共60条。然后排序取前20条。（因为第一页就在这60条数据里）如果取第二页，则三个库都取前40条，共120条。然后排序取第21~40条。（因为第二页就在这120条数据里）依次类推。
+              跨N库分页样例：如果分为ABC三库，每页显示20条数据，数据量足够多。
+实现方案方法一：全局视野法如果取第一页，则三个库都取前20条，共60条。然后排序取前20条。（因为第一页就在这60条数据里）如果取第二页，则三个库都取前40条，共120条。然后排序取第21~40条。（因为第二页就在这120条数据
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
               <a class="btn" href="/2017/07/07/跨N库分页/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/前端调优/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北辰不落雪">
+      <meta itemprop="description" content="人生如茶，<br/>初识饮，不念卿，<br/>细细品，才觉情。">
+      <meta itemprop="image" content="/polaris-images/avatar/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/07/07/前端调优/" class="post-title-link" itemprop="url">前端调优</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-07-07 20:01:00" itemprop="dateCreated datePublished" datetime="2017-07-07T20:01:00+08:00">2017-07-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/07/07/前端调优/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/07/前端调优/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              建议收集
+注释单行注释：//多行注释：/ / HTML注释，不推荐
+
+对于js引用靠近并放在之前
+
+对于参数的传递（父窗口input隐藏域），open相对于showDialog要稳定兼容的多！
+
+js对象类型用户自定义对象、内建对象（Array、Date）、宿主对象（document等,由浏览器提供
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/07/07/前端调优/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1770,7 +2016,7 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-07 18:34:58" itemprop="dateModified" datetime="2019-05-07T18:34:58+08:00">2019-05-07</time>
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -1838,9 +2084,11 @@ rowid： 运行后并未给数据加上行级锁（通过物理地址去确定�
         
           
             <p>
-              #####基本环境：centos7、centos6.5
-deb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安装的。rpm后缀的软件包才是for Redhat系的（包括CentOS）。
-如果想安装deb包，要安装dpkg命令~或者是用alien把.deb转化为rpm，
+              linux学习笔记前言学习环境：centos7、centos6.5，两种版本存在部分指令差别。
+
+debdeb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安装的。如果想安装deb包，要安装dpkg命令~；或者是用alien把.deb转化为rpm，然后运行~；
+
+rp
               ...
             </p>
           <!--noindex-->
@@ -1968,7 +2216,7 @@ deb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-07 19:55:21" itemprop="dateModified" datetime="2019-05-07T19:55:21+08:00">2019-05-07</time>
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -2036,12 +2284,8 @@ deb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安�
         
           
             <p>
-              环境准备系统环境：centos7安装：
-
-$ yum install docker
-
-开启服务：service docker start测试：docker run hello-world (或是docker verison)
-镜像测试搜索本地镜像：docker images查看源镜像库有关java方
+              前言
+这些笔记都是在16年底弄的（那时候公司很还没有docker，但是国内已经很火了，很多公司都在考虑docker落地，服务上云的事情，公司后来由技术部大佬亲手构建容器平台，本身没有参与到平台搭建中，但后期的代码及部署改造经历过），当时看了下基础记了点笔记，前不久整理下放在博客里面算是纪念。–201
               ...
             </p>
           <!--noindex-->
@@ -2095,6 +2339,10 @@ $ yum install docker
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2136,7 +2384,7 @@ $ yum install docker
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2194,7 +2442,21 @@ $ yum install docker
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
