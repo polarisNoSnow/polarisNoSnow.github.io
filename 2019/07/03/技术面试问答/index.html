@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/polaris-images/apple-touch-icon.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/polaris-images/favicon-32x32.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/polaris-images/favicon-32x32.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/polaris-images/safari-pinned-tab.svg?v=7.1.0" color="#222">
+
+
+  <link rel="manifest" href="/polaris-images/site.webmanifest">
+
+
+  <meta name="msapplication-config" content="/polaris-images/browserconfig.xml">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="技术面试问答部分参考：https://snailclimb.top/JavaGuide Spring说一说 IOC和 AOP IOC  控制反转：基于依赖倒置原则的一种解耦的设计思想，可通过第三方容器Spring IOC容器实现，最常见的方式叫做依赖注入（依赖注入就是将实例变量传入到一个对象中去）。  AOP  面向切面编程：AOP思想的实现一般都是基于 代理模式，在JAVA中一般采用JDK动态代">
+<meta name="keywords" content="面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术面试问答">
+<meta property="og:url" content="http://yoursite.com/2019/07/03/技术面试问答/index.html">
+<meta property="og:site_name" content="星辰阁">
+<meta property="og:description" content="技术面试问答部分参考：https://snailclimb.top/JavaGuide Spring说一说 IOC和 AOP IOC  控制反转：基于依赖倒置原则的一种解耦的设计思想，可通过第三方容器Spring IOC容器实现，最常见的方式叫做依赖注入（依赖注入就是将实例变量传入到一个对象中去）。  AOP  面向切面编程：AOP思想的实现一般都是基于 代理模式，在JAVA中一般采用JDK动态代">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images.cnitblog.com/i/426802/201406/232002051747387.jpg">
+<meta property="og:updated_time" content="2019-08-26T07:00:43.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术面试问答">
+<meta name="twitter:description" content="技术面试问答部分参考：https://snailclimb.top/JavaGuide Spring说一说 IOC和 AOP IOC  控制反转：基于依赖倒置原则的一种解耦的设计思想，可通过第三方容器Spring IOC容器实现，最常见的方式叫做依赖注入（依赖注入就是将实例变量传入到一个对象中去）。  AOP  面向切面编程：AOP思想的实现一般都是基于 代理模式，在JAVA中一般采用JDK动态代">
+<meta name="twitter:image" content="http://images.cnitblog.com/i/426802/201406/232002051747387.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/03/技术面试问答/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>技术面试问答 | 星辰阁</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/polarisNoSnow" target="_blank">
+	<img style="position:absolute;top:0;right:0;border:0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星辰阁</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/03/技术面试问答/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北辰不落雪">
+      <meta itemprop="description" content="人生如茶，<br/>初识饮，不念卿，<br/>细细品，才觉情。">
+      <meta itemprop="image" content="/polaris-images/avatar/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">技术面试问答
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-03 22:36:58" itemprop="dateCreated datePublished" datetime="2019-07-03T22:36:58+08:00">2019-07-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-26 15:00:43" itemprop="dateModified" datetime="2019-08-26T15:00:43+08:00">2019-08-26</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/03/技术面试问答/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/03/技术面试问答/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="技术面试问答"><a href="#技术面试问答" class="headerlink" title="技术面试问答"></a>技术面试问答</h1><p>部分参考：<a href="https://snailclimb.top/JavaGuide" target="_blank" rel="noopener">https://snailclimb.top/JavaGuide</a></p>
+<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><h3 id="说一说-IOC和-AOP"><a href="#说一说-IOC和-AOP" class="headerlink" title="说一说 IOC和 AOP"></a>说一说 IOC和 AOP</h3><ul>
+<li>IOC</li>
+</ul>
+<p><strong>控制反转</strong>：基于<strong>依赖倒置原则</strong>的一种解耦的设计思想，可通过第三方容器Spring IOC容器实现，最常见的方式叫做<strong>依赖注入</strong>（依赖注入就是将实例变量传入到一个对象中去）。</p>
+<ul>
+<li>AOP</li>
+</ul>
+<p><strong>面向切面编程</strong>：AOP思想的实现一般都是基于 <strong>代理模式</strong>，在JAVA中一般采用JDK动态代理模式，Spring AOP 同时支持 CGLIB、ASPECTJ、JDK动态代理。</p>
+<h3 id="SpringMVC工作流程"><a href="#SpringMVC工作流程" class="headerlink" title="SpringMVC工作流程"></a>SpringMVC工作流程</h3><p>通过前端控制器DispatcherServlet接收客户端请求<br>1.找到处理器映射 HandlerMapping (返回一个执行链)解析请求对应的 Handler；<br>2.通过HandlerAdapter执行Handler，调用真正的Handler处理器（controller）处理请求，返回ModelAndView；<br>3.通过视图解析器进行解析，返回视图对象；<br>4.视图渲染，将模型数据填充到request域中</p>
+<h3 id="Spring-AOP和JDK动态代理（代理模式）"><a href="#Spring-AOP和JDK动态代理（代理模式）" class="headerlink" title="Spring AOP和JDK动态代理（代理模式）"></a>Spring AOP和JDK动态代理（代理模式）</h3><h4 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h4><p>参考<a href="https://www.cnblogs.com/zuidongfeng/p/8735241.html" target="_blank" rel="noopener">JDK动态代理实现原理</a>InvocationHandler </p>
+<p><strong>流程</strong></p>
+<p>1、为接口创建代理类的字节码文件(代理类com.sun.proxy$Proxy0.class)；</p>
+<p>2、使用ClassLoader将字节码文件加载到JVM；</p>
+<p>3、创建代理类实例对象，执行对象的目标方法。</p>
+<p><strong>实现原理</strong></p>
+<p>1、生成的代理类继承了Proxy类并且实现了要代理的接口，<strong>由于java不支持多继承，所以JDK动态代理不能代理类；</strong></p>
+<p>2、重写了equals、hashCode、toString；</p>
+<p>3、通过invoke执行代理类中的目标方法doSomething；</p>
+<p>4、有一个静态代码块，通过反射获得代理类的所有方法（用于2、3）。</p>
+<h3 id="CGLIB"><a href="#CGLIB" class="headerlink" title="CGLIB"></a>CGLIB</h3><p>CGLIB底层使用了ASM（一个短小精悍的字节码操作框架）来操作字节码生成新的类（Groovy也是如此）</p>
+<p><strong>ASM</strong>：ASM 从类文件中读入信息后，能够改变类行为，分析类信息，甚至能够直接产生二进制 class 文件。</p>
+<p>区别：</p>
+<ul>
+<li><p>Java动态代理只能够对接口进行代理，CGLIB能够代理接口、普通类；</p>
+</li>
+<li><p>Java动态代理通过反射实现，生成类更高效，CGLIB使用ASM框架直接对字节码进行操作，执行类时比较高效。</p>
+</li>
+</ul>
+<h4 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP"></a>Spring AOP</h4><p>会这样子来进行切换，因为Spring AOP 同时支持 CGLIB、ASPECTJ、JDK动态代理</p>
+<ul>
+<li>如果目标对象的实现类实现了接口，Spring AOP 将会采用 JDK 动态代理来生成 AOP 代理类；</li>
+<li>如果目标对象的实现类没有实现接口，Spring AOP 将会采用 CGLIB 来生成 AOP 代理类（代理对象的子类）——不过这个选择过程对开发者完全透明、开发者也无需关心。</li>
+</ul>
+<h3 id="Spring循环依赖"><a href="#Spring循环依赖" class="headerlink" title="Spring循环依赖"></a>Spring循环依赖</h3><p><a href="https://blog.csdn.net/u010853261/article/details/77940767" target="_blank" rel="noopener">参考文章</a>，目前Spring中存在两种循环依赖</p>
+<p>1、构造器的循环依赖 （没法解决，构造器必须是在获取引用之前）</p>
+<p>2、field属性或setter的循环依赖（对象的field属性或setter是可以延后设置的）</p>
+<p>循环依赖的检测：Bean在创建的时候会打上标签，在递归调用的时候发现依赖的对象正在创建中则说明循环依赖。</p>
+<p><strong>解决方法</strong></p>
+<p><strong>Spring单例Bean初始化三步</strong></p>
+<ol>
+<li>createBeanInstance实例化（此时只是调用了构造方法）；</li>
+<li>populateBean属性填充(populate)；</li>
+<li>initializeBean初始化（init方法|AfterPropertiesSet方法）</li>
+</ol>
+<p><strong>三级缓存</strong></p>
+<p>Spring在Bean创建的过程，会尝试从缓存中获取，按顺序singletonObjects（一级） 、earlySingletonObjects（二级） 、singletonFactories （三级）。</p>
+<p><strong>简单过程</strong></p>
+<p>当A类B类存在field属性依赖时</p>
+<ol>
+<li>A类在完成初始化第一步时，将自己放入到第三级缓存中；</li>
+<li>初始化第二步，检测到依赖B，则尝试加载，此时B不存在需要创建；</li>
+<li>B类相同，但是在查找A的时候从第三级缓存中发现，则完成B的后续初始化放入一级缓存；</li>
+<li>当B类完成之后，回到A类继续完成后续流程。</li>
+</ol>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 双重检查加锁</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(singleton == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(Singleton.class)&#123;</span><br><span class="line">                <span class="keyword">if</span>(singleton == <span class="keyword">null</span>)&#123;</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*静态内置类方式实现</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*枚举方式(序列化中的readObject方法，不管是显式的还是默认的，它都会返回一个新建的实例)</span></span><br><span class="line"><span class="comment">*可避免反射攻击，以及避免序列化问题</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><h3 id="缓存相关问题"><a href="#缓存相关问题" class="headerlink" title="缓存相关问题"></a>缓存相关问题</h3><ul>
+<li><strong>缓存穿透</strong>：查询一个数据库一定不存在的数据。<br><strong>解决方案</strong><br>1.如果从数据库中查询不到则短期缓存空值<br>2.采用布隆过滤器，可能存在的数据哈希到一个足够大的bitMap中，拦截识别。<blockquote>
+<p>布隆过滤器：真实的数据通过多个hash函数，映射到大的bit数组中标记为1(默认全为0)，请求的数据通过那些hash函数计算映射的bit位置是否为1来判断。但是由于bit数组较小（远小于需要缓存的数据个数），所以位置覆盖和误差的问题。通过调节hash函数及bit数组大小来空值误判率。</p>
+</blockquote>
+</li>
+</ul>
+<ol start="3">
+<li>个人理解：key的生成采用类似银行卡号的方式，最后一位为校验位，可通过前面的值计算出，这个就可以在网关计算拦截。</li>
+</ol>
+<ul>
+<li><p><strong>缓存雪崩</strong><br>在某一个时间段，缓存集中过期失效（对于数据库而言，就会产生周期性的压力波峰）；或者redis出现宕机。<br><strong>解决方案</strong><br>1、分类设置不同的缓存周期，同类加上一个随机因子；<br>2、增加互斥锁（通过setnx的方式 ，后续请求不走数据库），控制数据库请求，重建缓存；<br>3、提高缓存的HA，如：redis集群。<br>对于服务可以<br>（1）熔断模式，对于后续请求，直接返回，快速释放资源（采用hystrix）。<br>（2）隔离模式，服务独立拆分，或者可以对不同类型的请求使用线程池来资源隔离（线程池隔离模式、信号量隔离模式）<br>（3）限流模式，提前对各个类型的请求设置最高的QPS阈值，若高于设置的阈值则对该请求直接返回，不再调用后续资源。</p>
+</li>
+<li><p><strong>缓存击穿</strong><br>一个热点key失效的瞬间，持续的大并发就穿破缓存<br><strong>解决方案</strong><br>1.设置永不过期<br>2.使用互斥锁（mutex key），redis中setnx，不存在则设置成功返回1，否则返回失败0.</p>
+</li>
+</ul>
+<h3 id="Redis持久化方式"><a href="#Redis持久化方式" class="headerlink" title="Redis持久化方式"></a>Redis持久化方式</h3><p>RDB： 快照形式  （定期将当前时刻的数据保存磁盘中）会产生一个dump.rdb文<br>AOF：append only file  (所有对redis的操作命令记录在aof文件中)，恢复数据，重新执行一遍即可。</p>
+<h4 id="Redis集群方式"><a href="#Redis集群方式" class="headerlink" title="Redis集群方式"></a>Redis集群方式</h4><p>1.主从复制：分为Master和Slave两个节点，主机会自动将数据同步到从机。<br>复制原理：从机（通信通过发送psync）连接到主机后，将主机发过来的快照（bgsave方式生成的rdb）载入（丢弃旧数据）–<strong>全量复制</strong> ，接着接收并执行来自主机的写命令（非阻塞的方式）–<strong>异步复制</strong>。如果全量复制过程中主从中断，再次连接时会触发<strong>增量复制</strong>，master从backlog中获取丢失的数据发送给slave，其中backlog的数据下标就是是slave返回的psync中的offset.</p>
+<p>2.哨兵模式：类似于主从，只是主机出现故障时可自动将从机转换为主机等。<br>哨兵原理：每个Sentinel（哨兵）进程以每秒一次的频率向集群的主机、从机及其他哨兵进程发送ping命令，如果主机超过回复时间，则标记<strong>主观下线</strong>。此时所有哨兵以每秒的频率确认此台主机主观下线，当足够的哨兵确认后，则标记此主机<strong>客观下线</strong>。之后向对应的从机发送info命令的频率改为一秒（之前是10秒），从机改为主机。（之前若是少数通过或者主机应答，则清除对应的标记状态）</p>
+<p>3.Redis-Cluster集群：<br>之前的模式都是存相同的数据，这种集群方式类似于分片，每台主节点上都存储不同的内容。所有的redis节点彼此互联(PING-PONG机制)，内部使用二进制协议优化传输速度和带宽。<br>每个节点包含：slot槽（0-16383）和cluster，前者用于决定当前节点包含的取值范围，后者用于管理集群。每个节点包含不同的哈希槽，通过算法计算数据存放位置。理论上只需要链接一个节点即可查询所以数据。<br>另外集群引入主从模式，保证高可用。<br>前公司采用三主三从的方式搭建的redis集群。</p>
+<h2 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h2><h3 id="zk选举机制"><a href="#zk选举机制" class="headerlink" title="zk选举机制"></a>zk选举机制</h3><h3 id="zk分布式锁"><a href="#zk分布式锁" class="headerlink" title="zk分布式锁"></a>zk分布式锁</h3><p>Zookeeper分布式锁，持久和临时节点（客户端与zk服务断开则删除）及各自的顺序节点。</p>
+<p><strong>原理</strong>：基于临时顺序节点</p>
+<p>1、客户端c1想获取锁的时候，会在ParentLock下面创建一个临时节点Lock1，c1查找ParentLock下面的所有节点并排序，并判断Lock1是否为第一节点，是则获取 锁；</p>
+<p>2、c2想获取锁的时候相同，此时临时节点Lock2不是第一节点，则Lock2监听自己前一节点Lock1（通过注册Watcher），进入等待状态。</p>
+<p>zookeeper第三方库<a href="https://curator.apache.org/" target="_blank" rel="noopener">Curator</a>客户端，InterProcessMutex中的acquire方法用于获取锁，release方法用于释放锁。</p>
+<h2 id="Java进阶"><a href="#Java进阶" class="headerlink" title="Java进阶"></a>Java进阶</h2><h3 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h3><p>JVM类加载过程</p>
+<p><strong>1. 加载</strong>：将类的class文件读入到内存，并为之创建一个java.lang.Class对象，由<strong>类加载器</strong>完成。</p>
+<p><strong>2. 连接</strong>：<br>– <strong>验证</strong>：验证字节码是否符合规范，语法分析校验是否合法，符号引用验证等<br>– <strong>准备</strong>：为类变量（static修饰，此处区分实例变量）分配内存并设置变量默认初始值，如int赋值0<br>– <strong>解析</strong>：将常量池内符号引用替换为直接引用</p>
+<p><strong>3. 初始化</strong>：</p>
+<p>执行类构造器<clinit>()方法的过程，给类变量static赋值。（与准备阶段不同，现在是真正的赋值）</clinit></p>
+<p>此处如果静态字段被final修饰（相当于宏变量），则编译器优化已经放入常量池，不会触发初始化。</p>
+<blockquote>
+<p>类变量：静态变量属于类，只要程序加载了类的字节码，不用创建任何实例对象，静态变量就会被分配空间，静态变量就可以被使用了。<br>实例变量：实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。</p>
+</blockquote>
+<p><strong>加载阶段和连接阶段的部分内容是交叉进行的，加载阶段尚未结束，连接阶段可能就已经开始了。</strong></p>
+<p><strong>类加载触发条件</strong>：</p>
+<ul>
+<li>调用静态成员时，会加载静态成员真正所在的类及其父类；</li>
+<li>使用new实例的时候（第一次new此对象）；</li>
+<li>加载子类时候，先加载父类；</li>
+<li>public  final static修饰的属性且在编译时就能确定值，相当于常量，则不会加载。</li>
+</ul>
+<h3 id="对象创建过程"><a href="#对象创建过程" class="headerlink" title="对象创建过程"></a>对象创建过程</h3><p>在类加载之后，接着是Java对象的创建（堆内存）</p>
+<p><strong>1. 类加载检查</strong></p>
+<p>首先在常量池中检查这个类的符号引用是否能够定位到，以及类加载的三步是否完成，否则执行类加载过程。</p>
+<p><strong>2. 分配内存</strong></p>
+<p>为新生对象从堆区划分一块一定大小的内存（类加载完成之后便可决定），分配指针分为“指针碰撞”和“空闲列表”，追根溯源是由GC方式决定（堆是否规整），并发问题由TLAB+CAS保证。</p>
+<p><strong>3. 初始化零值</strong></p>
+<p>内存分配完毕之后，JVM为内存空间初始化零值（根据数据类型的不同而不同），保证java代码不赋初始值就可以使用。</p>
+<p><strong>4. 设置对象头</strong></p>
+<p>存放例如此对象是谁的类实例（<strong>类元数据指针</strong>），对象哈希码、GC分代年龄信息（<strong>对象信息</strong>）等。</p>
+<p><strong>5. 执行init方法</strong></p>
+<p>从JVM的角度来说基本完成，从程序的角度来说刚刚开始，进行init初始化。</p>
+<p><strong>补充</strong></p>
+<blockquote>
+<p>对象在<strong>内存中的布局</strong>可以分为 3 块区域：<strong>对象头</strong>、<strong>实例数据</strong>和<strong>对齐填充</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>对象访问</strong> 分为两种（java栈的本地变量表中reference存放对应的地址）<br><strong>句柄：</strong>堆区划分内存作为句柄池，对象实例数据、类型数据的地址（方法区）<br><strong>直接指针：</strong>将对象实例数据与对象类型数据的地址绑定在一起，reference直接指向对象实例数据地址。</p>
+</blockquote>
+<h3 id="JVM内存模型（JDK1-6）"><a href="#JVM内存模型（JDK1-6）" class="headerlink" title="JVM内存模型（JDK1.6）"></a>JVM内存模型（JDK1.6）</h3><p>JVM管理的内存分为<strong>运行时数据区域</strong> + <strong>直接内存</strong>（堆外内存）</p>
+<p><strong>运行时数据区域</strong></p>
+<ul>
+<li><strong>线程共享</strong>：<ul>
+<li><strong>堆</strong>：用于存放对象实例、数组，是垃圾收集器管理的主要区域，俗称<strong>GC堆</strong>（可以分为新生代和老年代）。</li>
+<li><strong>方法区</strong>：是一种规范，用于储存被JVM加载的类信息、常量、静态变量、JIT 即时编译器编译后的代码。也称为永久代，HotSpot 虚拟机对虚拟机规范中<strong>方法区的一种实现方式</strong>（或说堆的一个逻辑部分）。包含运行时常量池。</li>
+<li><strong>直接内存</strong>（非运行时数据区域，但确实是共享）：</li>
+</ul>
+</li>
+<li><strong>线程私有</strong>：<ul>
+<li><strong>虚拟机栈</strong>：一个个栈针组成，每个栈针包含局部变量表、操作数栈、动态链接、出口信息等，每次方法调用的数据都是通过栈传递的。（如果不能动态扩展，会受最大栈深影响）为java方法（字节码）服务。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>局部变量表主要存放了编译器可知的各种数据类型</strong>（boolean、byte、char、short、int、float、long、double）、<strong>对象引用</strong>（reference 类型，它不同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄或其他与此对象相关的位置）。</p>
+</blockquote>
+<ul>
+<li><p><strong>本地方法栈</strong>：和虚拟机栈类似，主要为native方法服务。</p>
+</li>
+<li><p><strong>程序计数器</strong>：当前线程所执行的字节码的行号指示器（字节码指令的地址），如果单线程操作按序执行就无需计数器，但是多线程切换的时候就需要计数器来记录线程的字节码执行位置来恢复流程。（<strong>唯一一个不会出现 OOM 的内存区域</strong>）</p>
+</li>
+</ul>
+<p><strong>直接内存</strong></p>
+<p>直接内存由操作系统管理，可以减少GC，提高IO效率（堆内数据写入磁盘的时候，需要复制），java提供部分API操作。</p>
+<blockquote>
+<p>JDK1.7开始就陆续将方法区移除，改用<strong>元空间</strong>，使用直接内存。原因之一，方法区就可以不受JVM限制，只受系统内存的限制。</p>
+<p><strong>运行时常量池</strong>是方法区的一部分，方法区在移除后运行时常量池就存放Java堆中。</p>
+</blockquote>
+<h3 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h3><p>以前放置于方法区，后来迁移到堆区</p>
+<ul>
+<li><p>字符串常量池：用于存放字符串，StringTable的Hash表方式实现。</p>
+</li>
+<li><p>class常量池：包含在class文件的类信息中，编译阶段，用于存放字面量 + 符号引用。（位于本地）</p>
+</li>
+<li><p>运行时常量池：class常量池被加载到内存之后的版本（也就是每个class都有一个运行时常量池），但是它的字面量可以动态的添加，符号引用可以被解析为直接引用。（而当类加载到内存中后，jvm就会将class常量池中的内容存放到运行时常量池中）</p>
+</li>
+</ul>
+<p><strong>字面量&amp;符号引用</strong></p>
+<ul>
+<li>字面量：1.文本字符串 2.八种基本类型的值 3.被声明为final的常量等;</li>
+<li>符号引用：1.类和方法的全限定名 2.字段的名称和描述符 3.方法的名称和描述符。</li>
+</ul>
+<h3 id="JVM多线程"><a href="#JVM多线程" class="headerlink" title="JVM多线程"></a>JVM多线程</h3><p>JVM的多线程是通过CPU时间片轮转（即线程轮流切换并分配处理器执行时间）算法来实现的</p>
+<h3 id="String字符串"><a href="#String字符串" class="headerlink" title="String字符串"></a>String字符串</h3><ul>
+<li><p>String s1 = new String(“abc”); 这种方式创建1-2对象，字符串常量池如果没有“abc”会创一个，new会在堆区创建一个，s1拿到的是堆区实例的应用。</p>
+</li>
+<li><p>String str4 = str1 + str2; //会在堆上创建的新的对象，可查看class文件反编译的代码，内部做过优化。</p>
+</li>
+</ul>
+<h3 id="数据可见性"><a href="#数据可见性" class="headerlink" title="数据可见性"></a>数据可见性</h3><blockquote>
+<p>当一个线程修改了线程共享变量的值，其它线程在使用前，能够得到最新的修改值。<br>弱一致：只保证用户见到的数据是一致的（中间修改过几次，只需保证最终有序）。<br>强一致：任意时刻，存储的数据都是一致的。</p>
+</blockquote>
+<p>原因：同一个数据在不同的cpu核心的cache上可能不同。</p>
+<p>CPU三级缓存L1 -&gt; L2 -&gt; L3</p>
+<p>L1：包含分为独立的32K数据缓存+32K指令缓存（单核私有缓存）</p>
+<p>L2：高效内存访问队列，连接L1、L3，L2缓存大小为256K(单核私有缓存）</p>
+<p>L3：包括了在同一个槽上的所有L1和L2缓存中的数据（同插槽所有核心共享缓存）。</p>
+<p>CPU先通过高速缓存再到主存存在<strong>缓存一致性</strong>问题，以及CPU指令重排问题（CPU会处理依赖，但是还是    会存在问题）。</p>
+<p>方案：缓存到主存通过<strong>缓存一致性协议(MESI)</strong>解决。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CPU中每个缓存行（caceh line)使用4种状态进行标记（使用额外的两位(bit)表示):</span><br><span class="line">M: 被修改（Modified)：该核独享，已被修改，待回写到主存中变为E</span><br><span class="line">E: 独享的（Exclusive)：该核独享，与主存一致。写操作变为M，其他核读取变为S</span><br><span class="line">S: 共享的（Shared)：该状态代表被多核缓存，与主存一致，当其中一核修改则其他核变为I</span><br><span class="line">I: 无效的（Invalid）：该缓存无效（非M状态的缓存行随时作废，M必先写回主存）。</span><br></pre></td></tr></table></figure>
+<p>一个缓存除在<code>Invalid</code>状态外都可以满足cpu的读请求，一个<code>Invalid</code>的缓存行必须从主存中读取（变成<code>S</code>或者 <code>E</code>状态）来满足该<code>CPU</code>的读请求。</p>
+<p>一个写请求只有在该缓存行是M或者E状态时才能被执行，如果缓存行处于<code>S</code>状态，必须先将其它缓存中该缓存行变成<code>Invalid</code>状态（写请求核缓存行变为M）。该操作经常作用广播的方式来完成。</p>
+<p><strong>例子：</strong>core1与core2使用共享变量x（此时状态为S），当core1修改时，core2缓存行会置位I，core1置为M，之后可能会变为E，广播发送时会锁住缓存间的总线。core2再使用时会重新获取。</p>
+<h3 id="重排序"><a href="#重排序" class="headerlink" title="重排序"></a>重排序</h3><blockquote>
+<p>编译器、底层硬件（CPU等）出于“优化”的目的，按照某种规则将指令重新排序（尽管有时候看起来像乱序）</p>
+</blockquote>
+<p>操作系统和硬件层面则通过<strong>内存屏障（内存栅栏）</strong>解决：读屏障（Load Barrier）和写屏障（Store Barrier）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.阻止屏障两侧指令重排序</span><br><span class="line">2.强制把写缓冲区/高速缓存中的脏数据等写回主内存，让缓存中相应的数据失效。</span><br></pre></td></tr></table></figure>
+<h3 id="双亲委派"><a href="#双亲委派" class="headerlink" title="双亲委派"></a>双亲委派</h3><h3 id="Java锁机制"><a href="#Java锁机制" class="headerlink" title="Java锁机制"></a>Java锁机制</h3><p>乐观锁、</p>
+<p>悲观锁</p>
+<p>自旋锁：线程一直在尝试获取锁。</p>
+<p>非自旋锁：线程阻塞，待锁释放之后重新恢复获取。</p>
+<h3 id="volatile-amp-synschonized"><a href="#volatile-amp-synschonized" class="headerlink" title="volatile &amp; synschonized"></a>volatile &amp; synschonized</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">volatile</span><br><span class="line">1.可见性，对于一个该变量的读，一定能看到读之前最后的写入。</span><br><span class="line">2.防止重排序</span><br></pre></td></tr></table></figure>
+<p><strong>synchronized</strong></p>
+<p>修饰同步语句块：通过添加monitorenter（开始位置）、monitorexit（结束位置），在java对象的对象头中获取锁信息，当锁计数器为0则成功获取并加1，执行到monitorexit后锁计数器归0，锁释放。</p>
+<p>修饰方法：在flags标识中添加ACC_SYNCHRONIZED字段（其中还包public等方法权限），表明方法为同步方法</p>
+<p><strong>区别</strong></p>
+<ul>
+<li>volatile关键字能保证数据的可见性，但不能保证数据的原子性。synchronized关键字两者都能保证。</li>
+<li>volatile关键字主要用于解决变量在多个线程之间的可见性，而 synchronized关键字解决的是多个线程之间访问资源的同步性</li>
+<li></li>
+</ul>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>扩容：int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)，相当于原来1.5倍。</p>
+<p>新增元素：</p>
+<ol>
+<li><p>不指定位置，末尾追加</p>
+</li>
+<li><p>指定位置， index+1复制</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.arraycopy(elementData, index, elementData, index + 1,size - index);</span><br></pre></td></tr></table></figure>
+<h3 id="说一说HashMap-amp-ConcurrentHashMap"><a href="#说一说HashMap-amp-ConcurrentHashMap" class="headerlink" title="说一说HashMap&amp;ConcurrentHashMap"></a>说一说HashMap&amp;ConcurrentHashMap</h3><h3 id="AtomicInteger-amp-AtomicStampedReference"><a href="#AtomicInteger-amp-AtomicStampedReference" class="headerlink" title="AtomicInteger &amp; AtomicStampedReference"></a>AtomicInteger &amp; AtomicStampedReference</h3><p><strong>AtomicInteger</strong>：采用CAS（Compare And Swap），CAS机制当中使用了3个基本操作数：内存地址V，旧的预期值A，要修改的新值B。</p>
+<p>存在：ABA问题，即基于CAS方案时，可能存在其他线程从A -&gt; B -&gt; A改变，但是当前线程对比发现还是A，在部分情况下存在问题。</p>
+<p>解决方案：各种乐观锁一般基于版本戳version解决</p>
+<p>AtomicStampedReference：通过int整数stamp标记解决</p>
+<h3 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h3><p>线程完整生命周期：新建状态（new）、就绪状态（start）、运行状态、阻塞状态、死亡状态。</p>
+<p><img src="http://images.cnitblog.com/i/426802/201406/232002051747387.jpg" alt="img"></p>
+<p><strong>调用start方法方可启动线程并使线程进入就绪状态，而run方法只是thread的一个普通方法调用，还是在主线程里执行</strong></p>
+<h4 id="sleep-方法和wait-方法简单对比"><a href="#sleep-方法和wait-方法简单对比" class="headerlink" title="sleep()方法和wait()方法简单对比"></a>sleep()方法和wait()方法简单对比</h4><ol>
+<li>sleep方法没有释放锁，而wait方法释放了锁。</li>
+<li>wait()方法被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的notify()或者notifyAll()方法。sleep()方法执行完成后，线程会自动苏醒。</li>
+</ol>
+<h4 id="使用多线程常见的三种方式"><a href="#使用多线程常见的三种方式" class="headerlink" title="使用多线程常见的三种方式"></a>使用多线程常见的三种方式</h4><p>继承Thread类、实现Runnable接口、使用ThreadPoolExecutor线程池创建（推荐）。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>java类不允许多继承，但是接口可以；</p>
+<p>python是运行多继承的，实现原理基于深度、广度优先搜索。</p>
+<h3 id="异常分类及事务异常捕获"><a href="#异常分类及事务异常捕获" class="headerlink" title="异常分类及事务异常捕获"></a>异常分类及事务异常捕获</h3><p>Thorwable类是所有异常和错误的超类，有两个子类Error和Exception，分别表示错误和异常。<br>Error：一般是程序无法处理的错误，如：OutOfMemoryError，此时JVM一般会终止线程。<br>Exception：异常，一般分为运行时异常和非运行时异常<br>运行时异常（RuntimeException）称为不检查异常，编译时可以通过的，比如NPE<br>非运行时异常是除RuntimeException以外的异常称为检查异常，自己捕获或抛出。</p>
+<h3 id="过滤器-amp-拦截器"><a href="#过滤器-amp-拦截器" class="headerlink" title="过滤器&amp;拦截器"></a>过滤器&amp;拦截器</h3><p>在java常说的过滤器Filter，是基于Servlet，生命周期交友Servlet管理。</p>
+<p>而拦截器则通过动态代理的方式执行，独立存在，生命周期可交由IOC容器管理。</p>
+<h2 id="分布式架构-amp-微服务"><a href="#分布式架构-amp-微服务" class="headerlink" title="分布式架构&amp;微服务"></a>分布式架构&amp;微服务</h2><h3 id="谈谈分布式架构-amp-微服务"><a href="#谈谈分布式架构-amp-微服务" class="headerlink" title="谈谈分布式架构&amp;微服务"></a>谈谈分布式架构&amp;微服务</h3><h3 id="分布式一致性问题"><a href="#分布式一致性问题" class="headerlink" title="分布式一致性问题"></a>分布式一致性问题</h3><h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p>参考<a href="https://blog.csdn.net/wuzhiwei549/article/details/80692278" target="_blank" rel="noopener">https://blog.csdn.net/wuzhiwei549/article/details/80692278</a></p>
+<p>1.基于数据库实现排他锁，新增数据及带状态更新（非重入可通过记录当前获取锁的机器信息及线程信息来恢复）；</p>
+<p>2.基于redis的setnx方式（主机宕机且未及时同步从机则会出现问题）；</p>
+<p>3.Zookeeper分布式锁。</p>
+<p>总结：zk可靠性较好，redis性能较高。</p>
+<h3 id="脑裂（brain-split）"><a href="#脑裂（brain-split）" class="headerlink" title="脑裂（brain-split）"></a>脑裂（brain-split）</h3><p>脑裂是指在主备切换时，由于切换不彻底或其他原因，导致客户端和Slave误以为出现两个active master，最终使得整个集群处于混乱状态。</p>
+<p>1.添加冗余的heartbeat线，例如双线保证，减少故障；</p>
+<p>2.fence设备</p>
+<h2 id="dubbo"><a href="#dubbo" class="headerlink" title="dubbo"></a>dubbo</h2><h4 id="dubbo的工作原理"><a href="#dubbo的工作原理" class="headerlink" title="dubbo的工作原理"></a>dubbo的工作原理</h4><p>生产者、消费者、zk</p>
+<p>1.生产者在服务启动的时候，向注册中心注册自己所提供的服务（ zk将服务信息写入到临时节点下面）；</p>
+<p>2.消费者在服务启动的时候，向注册中心订阅自己所需服务 ;</p>
+<p>3.注册中心返回服务提供者地址给消费者，如有数据变更，将通过长连接的方式推送给消费者；</p>
+<p>4.消费者基于 软负载均衡算法，选取一台生产者调用，调用失败再选一台调用；</p>
+<p>5.消费者生产者，在内存中累计调用次数&amp;时间等，每分钟发送一次给监控中心。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h3 id="快排算法"><a href="#快排算法" class="headerlink" title="快排算法"></a>快排算法</h3><h3 id="topK问题"><a href="#topK问题" class="headerlink" title="topK问题"></a>topK问题</h3><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="Mysql简介"><a href="#Mysql简介" class="headerlink" title="Mysql简介"></a>Mysql简介</h3><p>MySQL 主要分为 <strong>Server 层</strong>和<strong>引擎层</strong></p>
+<ul>
+<li>Server 层主要包括<strong>连接器</strong>、<strong>查询缓存</strong>(8.0 版本后移除)、<strong>分析器</strong>、<strong>优化器</strong>、<strong>执行器</strong>，同时还有一个日志模块（binlog-归档日志），这个日志模块所有执行引擎都可以共用。</li>
+<li>引擎层是插件式的，主要负责数据的存储和读取，采用可以替换的插件式架构，目前主要包括，MyISAM，InnoDB，Memory 等。<blockquote>
+<p>binlog：归档日志，将数据库的DDL和DML操作在二进制日志中。主要用于数据库的主从复制及增量复制。</p>
+</blockquote>
+</li>
+</ul>
+<p>执行流程：</p>
+<ul>
+<li>查询语句的执行流程如下：权限校验（如果命中缓存）—》查询缓存—》分析器—》优化器—》权限校验—》执行器—》引擎</li>
+<li>更新语句执行流程如下：分析器—-》权限校验—-》执行器—》引擎—redo log(prepare 状态—》binlog—》redo log(commit状态)</li>
+</ul>
+<p><strong>异常处理</strong></p>
+<p>如果在上述更新执行过程中，出现异常</p>
+<ul>
+<li>判断redolog是否完整，完整则commit。</li>
+<li>如果redolog只是prepare 状态，判断binlog是否完整，完整则commit，否则回滚事务。</li>
+</ul>
+<p><strong>innoDB事务日志包括redo log和undo log</strong></p>
+<p>redolog：重做日志，提供前滚操作。</p>
+<p>undolog：回滚日志（逻辑），提供回滚和多个行版本控制(MVCC)。类似于将写命令逆操作化记录在日志中。</p>
+<p>日志刷盘：<a href="https://www.cnblogs.com/f-ck-need-u/archive/2018/05/08/9010872.html#auto_id_0" target="_blank" rel="noopener">https://www.cnblogs.com/f-ck-need-u/archive/2018/05/08/9010872.html#auto_id_0</a></p>
+<h3 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h3><p>MyISAM：MySQL 5.5.5 以前默认存储引擎，非聚簇索引，表级锁</p>
+<p>InnoDB：MySQL 5.5.5 版本开始作为默认存储引擎，聚簇索引，较好的支持事务，行级锁 </p>
+<h3 id="Mysql索引"><a href="#Mysql索引" class="headerlink" title="Mysql索引"></a>Mysql索引</h3><p>索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数，提升索引效率。</p>
+<p>所以二叉树，红黑树都不行，深度太深。</p>
+<p><strong>B树问题</strong><br>1.插入删除新的数据记录会破坏B-Tree的性质，因此在插入删除时，需要对树进行一个分裂、合并、转移等操作以保持B-Tree性质。造成IO操作频繁。<br>2.区间查找可能需要返回上层节点重复遍历，IO操作繁琐。</p>
+<p>同样Hash索引，只能用于精确查询，不支持排序等等问题。</p>
+<p><strong>Mysql索引采用B+树存储</strong></p>
+<p>Mysql在B+树的基础上做了修改，叶子节点之间添加了指针。</p>
+<p>索引<strong>是一个排序的列表</strong>，在这个列表中存储着索引的值和包含这个值的数据所在行的物理地址，在数据十分庞大的时候，索引可以大大加快查询的速度，这是因为使用索引后可以不用扫描全表来定位某行的数据，而是先通过索引表找到该行数据对应的物理地址然后访问相应的数据。</p>
+<h3 id="聚簇索引-amp-非聚簇索引"><a href="#聚簇索引-amp-非聚簇索引" class="headerlink" title="聚簇索引&amp;非聚簇索引"></a>聚簇索引&amp;非聚簇索引</h3><ul>
+<li><p>非聚集索引：一般的索引都为此种方式， 索引顺序与物理存储顺序不同；</p>
+</li>
+<li><p>聚集索引 ：数据库表行中数据的物理顺序与键值的逻辑（索引）顺序相同。</p>
+</li>
+<li><p><strong>非聚簇索引</strong>：将数据存储于索引分开结构，索引结构的叶子节点指向了数据的对应行，是一种密集索引；</p>
+</li>
+<li><p><strong>聚簇索引</strong>：将数据存储与索引放到了一块（所以一张表只要一个），找到索引也就找到了数据，是一种稀疏索引</p>
+</li>
+</ul>
+<p>InnoDB使用的是聚簇索引，将主键组织到一棵B+树中，而行数据就储存在叶子节点上。</p>
+<p>MyISM使用的是非聚簇索引，主键索引B+树的节点存储了主键，叶子节点都使用一个地址指向真正的表数据。</p>
+<blockquote>
+<p>聚簇索引适合用在排序的场合，范围查询，不适合频繁更新的列（需要移动叶子结点）及随机生成的列（UUID等，在新增的时候与前面有同样的问题）</p>
+</blockquote>
+<p>InnoDB的辅助索引data域存储相应记录主键的值，然后再通过聚簇索引查询到所有的值；</p>
+<p>MyISM的辅助索引与其本身的索引结构相同。</p>
+<h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p>原子性：指事物是最小的执行单位，不可分割。要么全部成功，要么全部失败。</p>
+<p>一致性：执行事务前后，数据完整性保持一致。</p>
+<p>隔离性：并发事务互不干扰，相互独立。</p>
+<p>持久性：指事务成功结束后，对数据库的操作能永久保存下来，故障也能恢复。</p>
+<h3 id="数据库隔离机制"><a href="#数据库隔离机制" class="headerlink" title="数据库隔离机制"></a>数据库隔离机制</h3><p><strong>三大并发问题</strong></p>
+<ul>
+<li>脏读：A事务访问数据并修改，在提交之前，B事务也访问了此数据（读取还未提交的数据）。</li>
+<li>不可重复读：A事务多次读取数据，读取中间，B事务修改该数据，导致A事务读取前后不一致。（修改）</li>
+<li>幻读：与不可重复度读类似，A事务在读取多行数据的时候，B事务重新插入或删除了几行数据，导致A事务的“幻读“ 。（新增删除）</li>
+<li>丢失修改：AB事务修改同一数据时候，导致某一修改丢失。</li>
+</ul>
+<p><strong>四种隔离级别</strong></p>
+<p>读取未提交（<strong>READ-UNCOMMITTED</strong>）：最低的隔离级别，可能会导致脏读、不可重复读、幻读。</p>
+<p>读取已提交（<strong>READ-COMMITTED</strong>）：允许读取并发事务已经提交的数据，但会导致不可重复读，幻读。</p>
+<p>可重复读（<strong>REPEATABLE-READ</strong>）：对于同一字段，在一个事务里读取结果是一致的。可以阻止脏读、不可重复读。</p>
+<p>可串行化（<strong>SERIALIZABLE</strong>）：事务依次执行，完全符合ACID。</p>
+<p>MySQL InnoDB存储引擎的默认支持的隔离级别是 <strong>REPEATABLE-READ（可重读）</strong>，在 <strong>分布式事务</strong> 的情况下一般会用到<strong>SERIALIZABLE(可串行化)</strong>隔离级别。</p>
+<h3 id="InnoDB锁"><a href="#InnoDB锁" class="headerlink" title="InnoDB锁"></a>InnoDB锁</h3><p>MVVC：多版本并发控制。</p>
+<p>InnoDB在RR的隔离级别下，采用Next-Key Lock 锁算法。</p>
+<p>Next-Key Lock = Record lock（行锁） + Gap lock  （间隙锁）</p>
+<p>Record Lock：单个行记录上的锁</p>
+<p>Gap lock ：锁定一个范围，但不包括记录本身。</p>
+<p>Next-Key Lock：1+2，锁定一个范围，并且锁定记录本身。主要解决幻读</p>
+<h3 id="锁的类型"><a href="#锁的类型" class="headerlink" title="锁的类型"></a>锁的类型</h3><p><strong>共享锁（S）</strong>：又称读锁，所有事务只能读取，不能修改，其他事务可重复添加S锁。（多线程同时拥有）</p>
+<p><strong>排他锁（X）</strong>：又称写锁，加锁事务可读可写，其它事务不允许添加任何锁。（线程独占）</p>
+<p><strong>意向共享（IS）</strong>：InnoDB一个数据行加共享锁前必须先取得该表的IS锁</p>
+<p><strong>意向排他（IX）</strong>：类似同上</p>
+<h3 id="分表分库Sharding-JDBC"><a href="#分表分库Sharding-JDBC" class="headerlink" title="分表分库Sharding-JDBC"></a>分表分库Sharding-JDBC</h3><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="内核态-amp-用户态"><a href="#内核态-amp-用户态" class="headerlink" title="内核态&amp;用户态"></a>内核态&amp;用户态</h3><p>把运行在操作系统上的进程称为用户进程，运行在<strong>用户空间</strong>；操作系统运行的空间称为<strong>系统空间</strong>。</p>
+<p>对于普通的用户程序想要调动硬件，比如读写磁盘，需要用户进程通过系统空间，访问对应的外设。前面基本相当于用户态、内核态或是用户进程、系统进程。</p>
+<h3 id="buffer缓冲区"><a href="#buffer缓冲区" class="headerlink" title="buffer缓冲区"></a>buffer缓冲区</h3><p>缓冲区的作用就是存储读过的磁盘数据，下次有需求直接从缓冲区读取，缓冲区是内存区域，读取非常快速。</p>
+<p><strong>用户缓冲区</strong>：减少系统调用次数，降低内核态用户态切换耗时。</p>
+<p><strong>内核缓冲区</strong>：在OS级别，提高磁盘IO效率，优化磁盘写操作。</p>
+<p><strong>硬件缓冲区</strong>：硬件与OS之间的缓冲区域</p>
+<p>数据交换流程：硬件缓冲区》》》内核缓冲区》》》用户缓冲区</p>
+<blockquote>
+<p>buffer和cache区别：前者相当于集中处理，堆积一定数量一次操作，减少操作次数；后者是提高数据访问效率，减少访问时间（不管是redis对于数据库，还是内存对于磁盘）。</p>
+</blockquote>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="BIO、NIO、AIO"><a href="#BIO、NIO、AIO" class="headerlink" title="BIO、NIO、AIO"></a>BIO、NIO、AIO</h3><p>同步：调用者等待被调用者返回结果，才能继续执行。</p>
+<p>异步：被调用者接收到请求立即应答，但没有返回结果，而是通过状态、通知或回调机制主动通知调用者结果；</p>
+<p>阻塞：blocking，调用方发起请求，在结果返回之前会一直将线程挂起；</p>
+<p>非阻塞：non-blocking，IO操作被调用后理解返回用户一个状态值，无需等待IO操作彻底完成，调用者不会被挂起，可通过轮询等方式获取结果。</p>
+<blockquote>
+<p>同步和异步：关注的是消息通信机制。</p>
+<p>阻塞和非阻塞：关注调用者在等待结果返回之前所处的状态。</p>
+</blockquote>
+<ul>
+<li><p><strong>BIO（Blocking I/O）</strong>：同步阻塞IO，数据的读取写入必须阻塞在一个线程内等待其完成，加上线程池生产的多线程可优化性能（活动连接数小于单机1000，性能不错）。缺点：线程创建、销毁、切换成本较高，消耗内存较多等等。</p>
+</li>
+<li><p><strong>NIO（Non-blocking I/O）</strong>：同步非阻塞的I/O模型，它支持面向缓冲的，基于通道的I/O操作方法。提供了 <strong>Channel </strong>, <strong>Selector</strong>，<strong>Buffer</strong>等抽象。<strong>IO 面向流(Stream oriented)，而 NIO 面向缓冲区(Buffer oriented)。</strong></p>
+<ul>
+<li><strong>Buffer</strong>：Buffer是一个对象，它包含一些要写入或者要读出的数据。</li>
+<li><strong>Channel</strong> ：NIO 通过Channel（通道） 进行读写。通道是双向的，可读也可写，而流的读写是单向的。</li>
+<li><strong>Selector</strong>：多路复用器选择器，用于使用单个线程处理多个通道。多个Channel以事件的方式可以注册到同一个Selector，从而达到用一个线程处理多个请求成为可能。</li>
+</ul>
+</li>
+<li><strong>AIO（Asynchronous I/O）</strong>：也就是 NIO 2，异步非阻塞的IO模型，异步 IO 是基于事件和回调机制实现的。</li>
+</ul>
+<p>BIO里用户最关心“我要读”，NIO里用户最关心”我可以读了”，在AIO模型里用户更需要关注的是“读完了”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">五种IO模型包括：阻塞IO、非阻塞IO、信号驱动IO、IO多路转接、异步IO。其中，前四个被称为同步IO。(参考：https://blog.csdn.net/ZWE7616175/article/details/80591587)</span><br><span class="line">非阻塞IO：如果kernel数据没有准备还，就返回一个EWOULDBLOCK错误，通过轮询的方式实现。</span><br><span class="line">信号驱动IO：应用进程告诉内核：当数据报准备好的时候，给我发送一个信号，对SIGIO信号进行捕捉，并且调用我的信号处理函数来获取数据报。</span><br><span class="line">IO多路转接：IO多路转接是多了一个select函数，select函数有一个参数是文件描述符集合，对这些文件描述符进行循环监听，当某个文件描述符就绪时，就对这个文件描述符进行处理。</span><br><span class="line">例子：一个人（线程）用鱼竿（方式）钓鱼。</span><br></pre></td></tr></table></figure>
+<h3 id="IO多路复用的机制"><a href="#IO多路复用的机制" class="headerlink" title="IO多路复用的机制"></a>IO多路复用的机制</h3><p>IO多路复用一次可以等多个<strong>文件描述符（相当于文件的地址）</strong><br>select：select函数之后会一直监视这些文件描述符中有哪些可读，如果有可读的描述符那么我们的工作进程就去读取资源</p>
+<p>poll：poll 在select （一个进程内1024个链接）基础上做了加强，可以维持任意数量的连接。</p>
+<p>epoll：前面两种都基于轮询遍历，epoll是基于内核的反射机制，在有活跃的 socket 时，系统会调用我们提前设置的回调函数。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>北辰不落雪</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2019/07/03/技术面试问答/" title="技术面试问答">http://yoursite.com/2019/07/03/技术面试问答/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/03/二叉树/" rel="next" title="结构树">
+                <i class="fa fa-chevron-left"></i> 结构树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/23/面试准备/" rel="prev" title="面试准备">
+                面试准备 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/polaris-images/avatar/avatar.png" alt="北辰不落雪">
+            
+              <p class="site-author-name" itemprop="name">北辰不落雪</p>
+              <div class="site-description motion-element" itemprop="description">人生如茶，<br>初识饮，不念卿，<br>细细品，才觉情。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/polarisNoSnow" title="GitHub &rarr; https://github.com/polarisNoSnow" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:787225863@qq.com" title="E-Mail &rarr; mailto:787225863@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#技术面试问答"><span class="nav-number">1.</span> <span class="nav-text">技术面试问答</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.1.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说一说-IOC和-AOP"><span class="nav-number">1.1.1.</span> <span class="nav-text">说一说 IOC和 AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC工作流程"><span class="nav-number">1.1.2.</span> <span class="nav-text">SpringMVC工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-AOP和JDK动态代理（代理模式）"><span class="nav-number">1.1.3.</span> <span class="nav-text">Spring AOP和JDK动态代理（代理模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK动态代理"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">JDK动态代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CGLIB"><span class="nav-number">1.1.4.</span> <span class="nav-text">CGLIB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Spring AOP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring循环依赖"><span class="nav-number">1.1.5.</span> <span class="nav-text">Spring循环依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">1.2.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">单例模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">1.3.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存相关问题"><span class="nav-number">1.3.1.</span> <span class="nav-text">缓存相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis持久化方式"><span class="nav-number">1.3.2.</span> <span class="nav-text">Redis持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis集群方式"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Redis集群方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper"><span class="nav-number">1.4.</span> <span class="nav-text">zookeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zk选举机制"><span class="nav-number">1.4.1.</span> <span class="nav-text">zk选举机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zk分布式锁"><span class="nav-number">1.4.2.</span> <span class="nav-text">zk分布式锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java进阶"><span class="nav-number">1.5.</span> <span class="nav-text">Java进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载过程"><span class="nav-number">1.5.1.</span> <span class="nav-text">类加载过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象创建过程"><span class="nav-number">1.5.2.</span> <span class="nav-text">对象创建过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM内存模型（JDK1-6）"><span class="nav-number">1.5.3.</span> <span class="nav-text">JVM内存模型（JDK1.6）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量池"><span class="nav-number">1.5.4.</span> <span class="nav-text">常量池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM多线程"><span class="nav-number">1.5.5.</span> <span class="nav-text">JVM多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String字符串"><span class="nav-number">1.5.6.</span> <span class="nav-text">String字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据可见性"><span class="nav-number">1.5.7.</span> <span class="nav-text">数据可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序"><span class="nav-number">1.5.8.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派"><span class="nav-number">1.5.9.</span> <span class="nav-text">双亲委派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java锁机制"><span class="nav-number">1.5.10.</span> <span class="nav-text">Java锁机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-amp-synschonized"><span class="nav-number">1.5.11.</span> <span class="nav-text">volatile &amp; synschonized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.5.12.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说一说HashMap-amp-ConcurrentHashMap"><span class="nav-number">1.5.13.</span> <span class="nav-text">说一说HashMap&amp;ConcurrentHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AtomicInteger-amp-AtomicStampedReference"><span class="nav-number">1.5.14.</span> <span class="nav-text">AtomicInteger &amp; AtomicStampedReference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java多线程"><span class="nav-number">1.5.15.</span> <span class="nav-text">Java多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-方法和wait-方法简单对比"><span class="nav-number">1.5.15.1.</span> <span class="nav-text">sleep()方法和wait()方法简单对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用多线程常见的三种方式"><span class="nav-number">1.5.15.2.</span> <span class="nav-text">使用多线程常见的三种方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.5.16.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常分类及事务异常捕获"><span class="nav-number">1.5.17.</span> <span class="nav-text">异常分类及事务异常捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器-amp-拦截器"><span class="nav-number">1.5.18.</span> <span class="nav-text">过滤器&amp;拦截器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式架构-amp-微服务"><span class="nav-number">1.6.</span> <span class="nav-text">分布式架构&amp;微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#谈谈分布式架构-amp-微服务"><span class="nav-number">1.6.1.</span> <span class="nav-text">谈谈分布式架构&amp;微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式一致性问题"><span class="nav-number">1.6.2.</span> <span class="nav-text">分布式一致性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式锁"><span class="nav-number">1.6.3.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脑裂（brain-split）"><span class="nav-number">1.6.4.</span> <span class="nav-text">脑裂（brain-split）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dubbo"><span class="nav-number">1.7.</span> <span class="nav-text">dubbo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dubbo的工作原理"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">dubbo的工作原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.8.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快排算法"><span class="nav-number">1.8.1.</span> <span class="nav-text">快排算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#topK问题"><span class="nav-number">1.8.2.</span> <span class="nav-text">topK问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">1.9.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql简介"><span class="nav-number">1.9.1.</span> <span class="nav-text">Mysql简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎"><span class="nav-number">1.9.2.</span> <span class="nav-text">存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql索引"><span class="nav-number">1.9.3.</span> <span class="nav-text">Mysql索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚簇索引-amp-非聚簇索引"><span class="nav-number">1.9.4.</span> <span class="nav-text">聚簇索引&amp;非聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的ACID"><span class="nav-number">1.9.5.</span> <span class="nav-text">事务的ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库隔离机制"><span class="nav-number">1.9.6.</span> <span class="nav-text">数据库隔离机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB锁"><span class="nav-number">1.9.7.</span> <span class="nav-text">InnoDB锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁的类型"><span class="nav-number">1.9.8.</span> <span class="nav-text">锁的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分表分库Sharding-JDBC"><span class="nav-number">1.9.9.</span> <span class="nav-text">分表分库Sharding-JDBC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">1.10.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内核态-amp-用户态"><span class="nav-number">1.10.1.</span> <span class="nav-text">内核态&amp;用户态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buffer缓冲区"><span class="nav-number">1.10.2.</span> <span class="nav-text">buffer缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">1.11.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO、NIO、AIO"><span class="nav-number">1.11.1.</span> <span class="nav-text">BIO、NIO、AIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO多路复用的机制"><span class="nav-number">1.11.2.</span> <span class="nav-text">IO多路复用的机制</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰不落雪</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://polaris.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2019/07/03/技术面试问答/";
+    this.page.identifier = "2019/07/03/技术面试问答/";
+    this.page.title = '技术面试问答';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://polaris.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haru01.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>

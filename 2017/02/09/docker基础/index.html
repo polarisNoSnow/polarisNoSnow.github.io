@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/polaris-images/apple-touch-icon.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/polaris-images/favicon-32x32.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/polaris-images/favicon-32x32.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/polaris-images/safari-pinned-tab.svg?v=7.1.0" color="#222">
+
+
+  <link rel="manifest" href="/polaris-images/site.webmanifest">
+
+
+  <meta name="msapplication-config" content="/polaris-images/browserconfig.xml">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言 这些笔记都是在16年底弄的（那时候公司很还没有docker，但是国内已经很火了，很多公司都在考虑docker落地，服务上云的事情，公司后来由技术部大佬亲手构建容器平台，本身没有参与到平台搭建中，但后期的代码及部署改造经历过），当时看了下基础记了点笔记，前不久整理下放在博客里面算是纪念。–2019.05.17   目前主要的部署流程：开发人员将代码提交到gitlab之后，通过Jenkins打包">
+<meta name="keywords" content="linux,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker基础">
+<meta property="og:url" content="http://yoursite.com/2017/02/09/docker基础/index.html">
+<meta property="og:site_name" content="星辰阁">
+<meta property="og:description" content="前言 这些笔记都是在16年底弄的（那时候公司很还没有docker，但是国内已经很火了，很多公司都在考虑docker落地，服务上云的事情，公司后来由技术部大佬亲手构建容器平台，本身没有参与到平台搭建中，但后期的代码及部署改造经历过），当时看了下基础记了点笔记，前不久整理下放在博客里面算是纪念。–2019.05.17   目前主要的部署流程：开发人员将代码提交到gitlab之后，通过Jenkins打包">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-01T13:45:14.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker基础">
+<meta name="twitter:description" content="前言 这些笔记都是在16年底弄的（那时候公司很还没有docker，但是国内已经很火了，很多公司都在考虑docker落地，服务上云的事情，公司后来由技术部大佬亲手构建容器平台，本身没有参与到平台搭建中，但后期的代码及部署改造经历过），当时看了下基础记了点笔记，前不久整理下放在博客里面算是纪念。–2019.05.17   目前主要的部署流程：开发人员将代码提交到gitlab之后，通过Jenkins打包">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2017/02/09/docker基础/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>docker基础 | 星辰阁</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/polarisNoSnow" target="_blank">
+	<img style="position:absolute;top:0;right:0;border:0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星辰阁</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/09/docker基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北辰不落雪">
+      <meta itemprop="description" content="人生如茶，<br/>初识饮，不念卿，<br/>细细品，才觉情。">
+      <meta itemprop="image" content="/polaris-images/avatar/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">docker基础
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-02-09 21:14:58" itemprop="dateCreated datePublished" datetime="2017-02-09T21:14:58+08:00">2017-02-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/02/09/docker基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/02/09/docker基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul>
+<li>这些笔记都是在16年底弄的（那时候公司很还没有docker，但是国内已经很火了，很多公司都在考虑docker落地，服务上云的事情，公司后来由技术部大佬亲手构建容器平台，本身没有参与到平台搭建中，但后期的代码及部署改造经历过），当时看了下基础记了点笔记，前不久整理下放在博客里面算是纪念。–2019.05.17</li>
+</ul>
+<ul>
+<li>目前主要的部署流程：开发人员将代码提交到gitlab之后，通过Jenkins打包代码 并执行构建脚本，在Rancher管理运行的服务，最后日志由elk收集展示搜索。（jenkins + docker + rancher + elk）</li>
+</ul>
+<ul>
+<li>感受：改造升级之后，基本上都是一键部署，缩短了大量的上线时间，减少了因为手工上线可能带来的误操作问题。同时，伸缩扩容等 可以快速的响应流量的变化。</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>系统环境：centos7<br>安装</p>
+<blockquote>
+<p>$ yum install docker</p>
+</blockquote>
+<p>开启服务</p>
+<blockquote>
+<p>$ service docker start</p>
+</blockquote>
+<p>测试</p>
+<blockquote>
+<p>$ docker run hello-world (或是docker verison)</p>
+</blockquote>
+<h1 id="镜像测试"><a href="#镜像测试" class="headerlink" title="镜像测试"></a>镜像测试</h1><p>搜索本地镜像</p>
+<blockquote>
+<p>$ docker images</p>
+</blockquote>
+<p>查看源镜像库有关java方面的镜像并且收藏数大于10</p>
+<blockquote>
+<p>$ docker search -s 10 java </p>
+</blockquote>
+<p>从镜像仓库拉取镜像</p>
+<blockquote>
+<p>$ docker pull *** </p>
+</blockquote>
+<p>后台运行learn/tutorial镜像并执行sh脚本(脚本含义：每秒输出一次hello world)</p>
+<blockquote>
+<p>$ docker run -d learn/tutorial /bin/sh -c “while true; do echo hello world; sleep 1; done”</p>
+</blockquote>
+<blockquote>
+<p>$ docker run -t -i runoob/ubuntu:v2 /bin/bash  </p>
+</blockquote>
+<p>查询正在运行的镜像</p>
+<blockquote>
+<p>$ docker ps</p>
+</blockquote>
+<p>从上面的查询的ID来查看此镜像输出的日志</p>
+<blockquote>
+<p>$ docker logs ID</p>
+</blockquote>
+<p>停止镜像</p>
+<blockquote>
+<p>$ docker stop ID</p>
+</blockquote>
+<h1 id="搭建镜像"><a href="#搭建镜像" class="headerlink" title="搭建镜像"></a>搭建镜像</h1><h2 id="安装基础系统环境"><a href="#安装基础系统环境" class="headerlink" title="安装基础系统环境"></a>安装基础系统环境</h2><p>下载一个linux基础镜像</p>
+<blockquote>
+<p>$ docker pull centos</p>
+</blockquote>
+<p>国外的docker Hub可能比较慢，使用下面的命令修改 daemon.json文件，会添加一个registry-mirrors：注册服务器镜像(使用daocloud的，默认为docker Hub)</p>
+<blockquote>
+<p>$ curl -sSL <a href="https://get.daocloud.io/daotools/set_mirror.sh" target="_blank" rel="noopener">https://get.daocloud.io/daotools/set_mirror.sh</a> | sh -s <a href="http://ce611378.m.daocloud.io" target="_blank" rel="noopener">http://ce611378.m.daocloud.io</a></p>
+</blockquote>
+<p>查看本地镜像列表</p>
+<blockquote>
+<p>$ docker images</p>
+</blockquote>
+<h2 id="操作基础系统"><a href="#操作基础系统" class="headerlink" title="操作基础系统"></a>操作基础系统</h2><p>进入系统</p>
+<blockquote>
+<p>$ docker run -i -t centos /bin/bash</p>
+</blockquote>
+<p>exit退出系统———-退出系统，容器会停止，所以在此之前用此账户再开一个窗口 执行下面的操作</p>
+<p>查询到所有的启动过容器</p>
+<blockquote>
+<p>$ docker ps -a </p>
+</blockquote>
+<p>启动停止的镜像</p>
+<blockquote>
+<p>$ docker start ID </p>
+</blockquote>
+<p>进入镜像中 </p>
+<blockquote>
+<p>$ docker attach ID           ###exit之后镜像依旧挂掉<br>或是<br>$ docker exec -i -t ID  /bin/bash   ###这种方式镜像在后台存活</p>
+</blockquote>
+<h2 id="搭建项目运行环境"><a href="#搭建项目运行环境" class="headerlink" title="搭建项目运行环境"></a>搭建项目运行环境</h2><p>JDK8 + tomcat7</p>
+<ul>
+<li>现在宿主机器里wget下资源(JDK8+tomcat7的tar包),坑爹的JDK7官网已经不支持游客下载</li>
+<li>将宿主磁盘挂载到docker镜像mnt目录下，解压然后cp到自己定义的目录</li>
+<li>jdk: 修改/etc/profile，添加路径保存，然后source /etc/profile更新</li>
+</ul>
+<h2 id="打包镜像"><a href="#打包镜像" class="headerlink" title="打包镜像"></a>打包镜像</h2><p><strong>建议使用dockerfile构建</strong></p>
+<p>提交修改</p>
+<blockquote>
+<p>$ docker commit -m=”第一次提交” -a=”polaris” 425cef90ab3f polaris/centos:v1</p>
+</blockquote>
+<p>-m: 描述信息<br>-a: 作者<br>425cef90ab3f：ID<br>polaris/centos:v1 :创建的目标镜像名+tag</p>
+<p>重新进入刚刚提交的镜像(之前所做的操作都存在)</p>
+<blockquote>
+<p>$ docker run -i -t polaris/centos:v1 /bin/bash</p>
+</blockquote>
+<p><strong>如果你想推送你的镜像到注册中心</strong><br>首先需要在docker官网创建一个Repository，如果你本地的名字和创建的不一样，会提示未授权。<br>本地打一个tag</p>
+<blockquote>
+<p>$ docker tag local-images:v1 dockerHub-images:v1</p>
+</blockquote>
+<p>登录docker</p>
+<blockquote>
+<p>$ docker login </p>
+</blockquote>
+<p>然后push你的本地镜像（很多操作和git类似）</p>
+<blockquote>
+<p>$ docker push <em>**</em> </p>
+</blockquote>
+<p>快速构建</p>
+<ul>
+<li>使用docker bulid来构建（会读取dockerfile文件），更快速简洁</li>
+<li>先pull然后修改之后commit（方法一的底层也是通过这种方式）</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><h3 id="更换镜像库"><a href="#更换镜像库" class="headerlink" title="更换镜像库"></a>更换镜像库</h3><p>从国外服务器pull镜像速度较慢，直接使用由DaoCloud或者阿里提供的Registry Mirror服务<br><a href="http://blog.daocloud.io/how-to-master-docker-image/" target="_blank" rel="noopener">http://blog.daocloud.io/how-to-master-docker-image/</a></p>
+<h3 id="挂载磁盘"><a href="#挂载磁盘" class="headerlink" title="挂载磁盘"></a>挂载磁盘</h3><p>将宿主的下载文件夹 挂载 到docker容器polaris镜像中的docker下</p>
+<blockquote>
+<p>$ docker run -it -v /home/download:/mnt polaris/centos:v1 /bin/bash</p>
+</blockquote>
+<p>没试过在已经启动的docker镜像中挂载</p>
+<h3 id="查看容器相关信息"><a href="#查看容器相关信息" class="headerlink" title="查看容器相关信息"></a>查看容器相关信息</h3><p>主要是查看网络配置，容器里面很多命令都没有</p>
+<blockquote>
+<p>$ docker inspect a7e0139b5940</p>
+</blockquote>
+<h3 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h3><p>交互型</p>
+<blockquote>
+<p>$ docker run -i -t -p 5000:8080 polaris/centos:v1 /bin/bash </p>
+</blockquote>
+<p>后台型</p>
+<blockquote>
+<p>$ docker run -d -i -t -p 5000:8080 polaris/centos:v1 </p>
+</blockquote>
+<h3 id="阿里云"><a href="#阿里云" class="headerlink" title="阿里云"></a>阿里云</h3><p>以我的阿里云为例<br>下载</p>
+<blockquote>
+<p>$ docker pull registry.cn-hangzhou.aliyuncs.com/polarisnosnow/polaris:v2</p>
+</blockquote>
+<p>上传</p>
+<blockquote>
+<p>$ docker login –username=<em>**</em>  registry.cn-hangzhou.aliyuncs.com<br>$ docker tag [ImageId] registry.cn-hangzhou.aliyuncs.com/polarisnosnow/polaris:[镜像版本号]<br>$ docker push registry.cn-hangzhou.aliyuncs.com/polarisnosnow/polaris:[镜像版本号]</p>
+</blockquote>
+<h3 id="搭建注册服务器"><a href="#搭建注册服务器" class="headerlink" title="搭建注册服务器"></a>搭建注册服务器</h3><p>下载服务器镜像并运行</p>
+<blockquote>
+<p>$ docker pull registry<br>$ docker run -p 5000:5000 -d -i -t registry </p>
+</blockquote>
+<p>提交并推送</p>
+<blockquote>
+<p>$ docker commit cid 127.0.0.1:5000/my_image:v1<br>$ docker push 127.0.0.1:5000/my_image:v1</p>
+</blockquote>
+<p>可以使用docker API查看库中结果<br><a href="http://127.0.0.1:5000/v2/_catalog" target="_blank" rel="noopener">http://127.0.0.1:5000/v2/_catalog</a><br><a href="http://127.0.0.1:5000/v2/my_image/tag/list" target="_blank" rel="noopener">http://127.0.0.1:5000/v2/my_image/tag/list</a></p>
+<p>注意客户端在/etc/docker/daemon.json 中添加{ “insecure-registries”:[“127.0.0.1:5000”]}<br>安全访问（默认走的https）</p>
+<h3 id="docker管理界面"><a href="#docker管理界面" class="headerlink" title="docker管理界面"></a>docker管理界面</h3><ul>
+<li><strong>dockerUI</strong></li>
+</ul>
+<p>只能用于单机，单功能齐全。</p>
+<p>构建脚本</p>
+<blockquote>
+<p>$ docker run -d -p 9000:9000 –privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li><strong>shipyard</strong></li>
+</ul>
+<p>适合集群，各种资源分配，性能检测等</p>
+<p>/etc/sysconfig/docker中添加对2375的监听 </p>
+<blockquote>
+<p>OPTIONS=”-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock”</p>
+</blockquote>
+<p>shipyard构建脚本（启动的容器较多）</p>
+<blockquote>
+<p>$ curl -s <a href="https://shipyard-project.com/deploy" target="_blank" rel="noopener">https://shipyard-project.com/deploy</a> | bash -s Username: admin Password: shipyard</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>$ docker run –rm -v /var/run/docker.sock:/var/run/docker.sock shipyard/deploy start</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>北辰不落雪</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2017/02/09/docker基础/" title="docker基础">http://yoursite.com/2017/02/09/docker基础/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/26/Linux初阶/" rel="prev" title="linux初级">
+                linux初级 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/polaris-images/avatar/avatar.png" alt="北辰不落雪">
+            
+              <p class="site-author-name" itemprop="name">北辰不落雪</p>
+              <div class="site-description motion-element" itemprop="description">人生如茶，<br>初识饮，不念卿，<br>细细品，才觉情。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/polarisNoSnow" title="GitHub &rarr; https://github.com/polarisNoSnow" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:787225863@qq.com" title="E-Mail &rarr; mailto:787225863@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">2.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#镜像测试"><span class="nav-number">3.</span> <span class="nav-text">镜像测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建镜像"><span class="nav-number">4.</span> <span class="nav-text">搭建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装基础系统环境"><span class="nav-number">4.1.</span> <span class="nav-text">安装基础系统环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作基础系统"><span class="nav-number">4.2.</span> <span class="nav-text">操作基础系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建项目运行环境"><span class="nav-number">4.3.</span> <span class="nav-text">搭建项目运行环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包镜像"><span class="nav-number">4.4.</span> <span class="nav-text">打包镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">4.5.</span> <span class="nav-text">其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更换镜像库"><span class="nav-number">4.5.1.</span> <span class="nav-text">更换镜像库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载磁盘"><span class="nav-number">4.5.2.</span> <span class="nav-text">挂载磁盘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看容器相关信息"><span class="nav-number">4.5.3.</span> <span class="nav-text">查看容器相关信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端口映射"><span class="nav-number">4.5.4.</span> <span class="nav-text">端口映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里云"><span class="nav-number">4.5.5.</span> <span class="nav-text">阿里云</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建注册服务器"><span class="nav-number">4.5.6.</span> <span class="nav-text">搭建注册服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker管理界面"><span class="nav-number">4.5.7.</span> <span class="nav-text">docker管理界面</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰不落雪</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://polaris.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2017/02/09/docker基础/";
+    this.page.identifier = "2017/02/09/docker基础/";
+    this.page.title = 'docker基础';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://polaris.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haru01.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>

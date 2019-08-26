@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/polaris-images/apple-touch-icon.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/polaris-images/favicon-32x32.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/polaris-images/favicon-32x32.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/polaris-images/safari-pinned-tab.svg?v=7.1.0" color="#222">
+
+
+  <link rel="manifest" href="/polaris-images/site.webmanifest">
+
+
+  <meta name="msapplication-config" content="/polaris-images/browserconfig.xml">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="linux学习笔记前言学习环境：centos7、centos6.5，两种版本存在部分指令差别。  debdeb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安装的。如果想安装deb包，要安装dpkg命令~；或者是用alien把.deb转化为rpm，然后运行~；  rpmrpm后缀的软件包才是for Redhat系的（包括CentOS）。  yumyum是操作源组（里">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux初级">
+<meta property="og:url" content="http://yoursite.com/2017/04/26/Linux初阶/index.html">
+<meta property="og:site_name" content="星辰阁">
+<meta property="og:description" content="linux学习笔记前言学习环境：centos7、centos6.5，两种版本存在部分指令差别。  debdeb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安装的。如果想安装deb包，要安装dpkg命令~；或者是用alien把.deb转化为rpm，然后运行~；  rpmrpm后缀的软件包才是for Redhat系的（包括CentOS）。  yumyum是操作源组（里">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/3650492-b77ea2470a92bb8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-06-01T13:45:14.077Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux初级">
+<meta name="twitter:description" content="linux学习笔记前言学习环境：centos7、centos6.5，两种版本存在部分指令差别。  debdeb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安装的。如果想安装deb包，要安装dpkg命令~；或者是用alien把.deb转化为rpm，然后运行~；  rpmrpm后缀的软件包才是for Redhat系的（包括CentOS）。  yumyum是操作源组（里">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/3650492-b77ea2470a92bb8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2017/04/26/Linux初阶/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>linux初级 | 星辰阁</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/polarisNoSnow" target="_blank">
+	<img style="position:absolute;top:0;right:0;border:0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星辰阁</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/Linux初阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="北辰不落雪">
+      <meta itemprop="description" content="人生如茶，<br/>初识饮，不念卿，<br/>细细品，才觉情。">
+      <meta itemprop="image" content="/polaris-images/avatar/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星辰阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">linux初级
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-26 11:32:30" itemprop="dateCreated datePublished" datetime="2017-04-26T11:32:30+08:00">2017-04-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-01 21:45:14" itemprop="dateModified" datetime="2019-06-01T21:45:14+08:00">2019-06-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/04/26/Linux初阶/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/26/Linux初阶/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="linux学习笔记"><a href="#linux学习笔记" class="headerlink" title="linux学习笔记"></a>linux学习笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学习环境：centos7、centos6.5，两种版本存在部分指令差别。</p>
+<ul>
+<li><p>deb<br>deb后缀的软件包是for Debian系的（包括Ubuntu），不是给centos安装的。<br>如果想安装deb包，要安装dpkg命令~；<br>或者是用alien把.deb转化为rpm，然后运行~；</p>
+</li>
+<li><p>rpm<br>rpm后缀的软件包才是for Redhat系的（包括CentOS）。</p>
+</li>
+<li><p>yum<br>yum是操作源组（里面各种官方程序），而rpm是操作自己的rpm包（自己下载过来的）</p>
+</li>
+</ul>
+<h2 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h2><h3 id="文件复制信息丢失"><a href="#文件复制信息丢失" class="headerlink" title="文件复制信息丢失"></a>文件复制信息丢失</h3><p>直接从windows拖到vm可能会导致文件缩小（丢失信息）</p>
+<h3 id="安装依赖缺失"><a href="#安装依赖缺失" class="headerlink" title="安装依赖缺失"></a>安装依赖缺失</h3><p>使用rpm可能需要依赖包，使用yum安装（yum search <strong><em>:查询</em></strong>的yum源）</p>
+<h3 id="指令缺失"><a href="#指令缺失" class="headerlink" title="指令缺失"></a>指令缺失</h3><p>如果你的linux采用最小安装（没有图形界面等等），很多命令是默认没有安装的，所以你使用坑二或是在线下载的方式，结果各种错误，此时就需要注意你的网络试试：ip addr；</p>
+<p>如果你的ip并没有分配，service network start; 开启网络吧!(记得修改配置文件ONBOOT=yes–开机启动网络).</p>
+<p>接着yum search *，查询到位置后，yum install *。(有的命令需要updatedb,比如locate)</p>
+<h3 id="阿里云远程登录问题"><a href="#阿里云远程登录问题" class="headerlink" title="阿里云远程登录问题"></a>阿里云远程登录问题</h3><p>阿里云出现了两次不同的登录问题。</p>
+<h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p>突然有天别人告诉我，所有账户都登录不上（包括root），后来直接通过阿里的控制台登录成功，然后查看原因。</p>
+<p>一般远程登录不上，先检查端口22(负责远程连接的端口)，发现root权限竟然无法开放和关闭端口，脚本的所有权已被修改，而且每个文件的所有权都属于某用户，原来他误操作</p>
+<blockquote>
+<p>$ chmod *** /</p>
+</blockquote>
+<p>当时他没发现可怕的事情，也就没放在心上，之后就炸了。</p>
+<ul>
+<li>解决方案</li>
+</ul>
+<p>因为阿里云是几个同学合伙买的，上面的都是一些个人项目，所以当时直接就直接改了。（暂未发现回退的方案）<br>把所有的文件属性都改为root，然后单独修改每个账户的文件夹（包括子文件夹）的权限 (-R：递归修改 子文件)。<br>权限修改</p>
+<blockquote>
+<p>$ chmod -R / </p>
+</blockquote>
+<p>权限组修改</p>
+<blockquote>
+<p>$ chgrp </p>
+</blockquote>
+<p>修改文件属性（权限、组等等）</p>
+<blockquote>
+<p>$ chown -R tangyb.bxGroup ./polaris </p>
+</blockquote>
+<h4 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h4><p>个别用户登录不上（显示建立连接通道，然后就和卡机了一样），查看登录日志（文件：/var/log/secure），发现错误，此用户的进程数过多（默认是1024） 。</p>
+<ul>
+<li>解决方案</li>
+</ul>
+<p>提升进程数（文件：90-nproc.conf）或是关闭此用户下的进程（pkill -u username）。</p>
+<h3 id="远程问题"><a href="#远程问题" class="headerlink" title="远程问题"></a>远程问题</h3><p>突然某天vm不能远程了，主机不能ping通vm，vm可以ping通主机并且可以上网（采用的nat模式）；<br>后改为桥接模式，主机可以连接但是vm无法上网（公司绑定了mac地址），尴尬！</p>
+<p>因为以前是可以的，所以不存在网上说的nat不能被远程的情况，仔细想想公司是以10开头的网络，而vm是192开头，根本就不在一个网段,那么原来是怎么通信的？</p>
+<p>后来查了下是和两个虚拟网卡有关vmnet1和vmnet8。<br>一个是设置私有网络（Host Only）时用来和主机通信的，禁用以后就无法正常使用Host-Only模式了；<br>另一个是设置网络地址翻译（NAT）时和主机通讯使用的。</p>
+<p>而我上次直接禁用了这两个，如果你只是远程vm，只需打开vmnet8.</p>
+<h3 id="虚拟机网络切换"><a href="#虚拟机网络切换" class="headerlink" title="虚拟机网络切换"></a>虚拟机网络切换</h3><p>公司网线 和自家wifi 切换</p>
+<ul>
+<li>vm中新建的centos7无法连接网络（桥接模式，没有复制物理网络连接状态），后来ping宿主ip出现network is unreachable（网络不可达）也没有ifcfg-eth0文件（cent7貌似都没有），直接修改ifcfg-eno167777736文件，改为ONBOOT=yes（开机启动此配置），然后service network start。 ok！搞定</li>
+<li>如果 NAT也存在上面的问题unreachable，首页查看宿主机器的默认网关，接着将v8的网关改为一致即可（或是.2，.1）。</li>
+</ul>
+<p>在公司的时候，宿主机器的ip和mac是绑定的，NAT模式是可以的。(有的时候会有问题)，主要就是这个网关IP的原因。也可以使用桥接，指定宿主机器的物理网卡</p>
+<ul>
+<li>桥接相当于你的兄弟机器，大家在一个网段；</li>
+<li>NAT相当于宿主机器做为路由，虚拟机做为局域网中的一台机器（所以IP为192.168**）。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/3650492-b77ea2470a92bb8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></p>
+<h2 id="常识"><a href="#常识" class="headerlink" title="常识"></a>常识</h2><h3 id="1、依赖"><a href="#1、依赖" class="headerlink" title="1、依赖"></a>1、依赖</h3><p>下载<em>.sh文件，并直接运行，会下载相关组件及软件（如google浏览器）<br>rpm 文件：rpm -ivh </em>.rpm<br>(rpm安装后有些需要yum 真正安装软件及其依赖)</p>
+<h3 id="2、解压文件"><a href="#2、解压文件" class="headerlink" title="2、解压文件"></a>2、解压文件</h3><p>  cp -r 源位置 目标位置<br>  tar -xvf *.tar.gz  (-v/x:压缩/解压，-v:详细过程，-f:输出/输入文件)</p>
+<h3 id="3、删除"><a href="#3、删除" class="headerlink" title="3、删除"></a>3、删除</h3><p>循环删除此目录及子文件、文件夹</p>
+<blockquote>
+<p>$ rm -rf *</p>
+</blockquote>
+<h3 id="4、jdk环境"><a href="#4、jdk环境" class="headerlink" title="4、jdk环境"></a>4、jdk环境</h3><p>默认安装路径：usr/java<br>环境配置： etc/profile<br>通过export只是临时性，需要在profile加上路径，然后source /etc/profile使环境立即生效。</p>
+<h3 id="5、查询安装了哪些jdk"><a href="#5、查询安装了哪些jdk" class="headerlink" title="5、查询安装了哪些jdk"></a>5、查询安装了哪些jdk</h3><blockquote>
+<p>$ rpm -qa|grep jdk</p>
+</blockquote>
+<h3 id="6、卸载相应jdk版本"><a href="#6、卸载相应jdk版本" class="headerlink" title="6、卸载相应jdk版本"></a>6、卸载相应jdk版本</h3><blockquote>
+<p>$ rpm -qa | grep java #查询<br>$ rpm -e –nodeps * #卸载相关版本</p>
+</blockquote>
+<p>（找不到openjdksource可以：yum -y remove java *）–貌似没用，先备着(只是删除软件包)</p>
+<h3 id="7、文件属性"><a href="#7、文件属性" class="headerlink" title="7、文件属性"></a>7、文件属性</h3><p>列出文件</p>
+<blockquote>
+<p>$ ls -l<br>dr-xr-xr-x   2 root root 4096 Dec 14  2012 bin</p>
+</blockquote>
+<p>其中dr-xr-xr-x为文件属性，每个文件的属性由左边第一部分的10个字符组成。<br>第0位字符d代表目录（文件：-，链接文档是：l 等等），后面的符号三个一组，分别是<br>第一组：属主权限<br>第一组：属组权限<br>第一组：其他用户的权限</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件属性</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">r</td>
+<td style="text-align:center">可读（read）</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">w</td>
+<td style="text-align:center">可写（write）</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">x</td>
+<td style="text-align:center">可执行（execute）</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">无</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>rwx也可以用数字来代替，如-rw-r–r– (644) 只有所有者才有读和写的权限，组群和其他人只有读的权限<br><strong>注意</strong><br>第0位可能会出现如下情况</p>
+<ul>
+<li>为可执行文件时<br>4：SetUID，执行的用户暂时获得属主权限，执行完毕权限消失<br>2：SetGID，执行的用户暂时获得属组权限，执行完毕权限消失</li>
+<li>为普通目录时<br>2：SetGID，普通用户对此目录暂时可获得属组权限<br>0：SBIT，普通用户只能删除自己创建的文件/目录（粘滞位）</li>
+</ul>
+<h3 id="8、网络下载"><a href="#8、网络下载" class="headerlink" title="8、网络下载"></a>8、网络下载</h3><p>wget 下载想要的rpm或是其他文件</p>
+<h3 id="9、sudoers"><a href="#9、sudoers" class="headerlink" title="9、sudoers"></a>9、sudoers</h3><p>sudoers文件的作用是控制用户可以执行哪些指令</p>
+<h3 id="10、开放端口"><a href="#10、开放端口" class="headerlink" title="10、开放端口"></a>10、开放端口</h3><p>新安装的mysql可能无法远程，如果用户表已经赋权好了，远程连接报10038错误</p>
+<blockquote>
+<p>$ firewall-cmd –zone=public –add-port=3306/tcp –permanent #开放3306</p>
+</blockquote>
+<blockquote>
+<p>$ firewall-cmd –reload #在不改变状态的条件下重新加载防火墙</p>
+</blockquote>
+<p>上面的指令完全ok，下面的备用</p>
+<blockquote>
+<p>$ systemctl stop firewalld.service #停止</p>
+</blockquote>
+<blockquote>
+<p>$ systemctl disable firewalld.service #禁用</p>
+</blockquote>
+<p>（centos6.5 service iptables stop）<br>神坑：直接stop防火墙，依旧访问不了，必须要先开放端口</p>
+<h3 id="11、vi编辑器"><a href="#11、vi编辑器" class="headerlink" title="11、vi编辑器"></a>11、vi编辑器</h3><p>gg:第一行<br>G：最后一行<br>ctrl+b:上翻一页<br>ctrl+f:下翻一页 </p>
+<p>/<em> 从光标开始处向文件尾搜索<br>?</em> 从光标开始处向文件首搜索<br>n：在同一方向重复上一次搜索命令(/?的方向决定方向)</p>
+<p>shift+v:块选择<br>yy:块复制<br>dd:剪切当前行<br>p:粘贴</p>
+<h3 id="12、epel-release"><a href="#12、epel-release" class="headerlink" title="12、epel-release"></a>12、epel-release</h3><p>安装docker的时候看教程需要安装epel-release包，我记得以前安装过，查询之后才知道这是第三库源，里面有很多程序方便下载而且很多扩展包比官网更新较快（官方以稳定为主）。<br>yum install docker（centos7下直接安装，不同版本会不同）</p>
+<h3 id="13、进程操作"><a href="#13、进程操作" class="headerlink" title="13、进程操作"></a>13、进程操作</h3><p>ctrl-c 发送 SIGINT 信号给前台进程组中的所有进程。常用于终止正在运行的程序。<br>ctrl-z 发送 SIGTSTP 信号给前台进程组中的所有进程，常用于挂起一个进程<br>crtl+z 将进程挂起，然后fg/bg把刚刚挂在的程序放在前台/后台运行</p>
+<h3 id="14、系统版本"><a href="#14、系统版本" class="headerlink" title="14、系统版本"></a>14、系统版本</h3><p>系统版本</p>
+<blockquote>
+<p>$ cat  /etc/redhat-release<br>内核版本<br>$ uname -r</p>
+</blockquote>
+<h3 id="15、查看端口占用"><a href="#15、查看端口占用" class="headerlink" title="15、查看端口占用"></a>15、查看端口占用</h3><blockquote>
+<p>$ ps -anp |grep 8080</p>
+</blockquote>
+<h3 id="16、golang安装"><a href="#16、golang安装" class="headerlink" title="16、golang安装"></a>16、golang安装</h3><p>golang的install是默认在/usr/local/bin/ 如果想自己配置，需要在profile添加指定路径。</p>
+<blockquote>
+<p>$ export GOROOT=/usr/tangyb/go</p>
+</blockquote>
+<blockquote>
+<p>$ export GOPATH=$PATH:$GOROOT/bin</p>
+</blockquote>
+<h3 id="17、设置tomcat的https"><a href="#17、设置tomcat的https" class="headerlink" title="17、设置tomcat的https"></a>17、设置tomcat的https</h3><ul>
+<li><p>生成文件 jdk1.7.0_79/bin/keytool -genkey -alias polaris -keyalg RSA -keystore ./polaris.keystore </p>
+</li>
+<li><p>导出证书 jdk1.7.0_79/bin/keytool  -export -alias polaris -keystore ./polaris.keystore -storepass * -rfc -file polaris.cer</p>
+</li>
+<li><p>在server.xml文件的ssl/tls端口 加入keystoreFile=”/usr/baxia/users/tangyb/tomcat_https/polaris.keystore” keystorePass=”huoying3138266”</p>
+</li>
+</ul>
+<p><strong>一定要记得在输入name的时候是写入 网站域名，否则会出现无法通过身份验证的红叉</strong><br>参考文章<a href="http://www.cnblogs.com/green-hand/p/6514597.html" target="_blank" rel="noopener">http://www.cnblogs.com/green-hand/p/6514597.html</a></p>
+<h3 id="18、rm命令的修改（改为mv）-及-定时清除文件"><a href="#18、rm命令的修改（改为mv）-及-定时清除文件" class="headerlink" title="18、rm命令的修改（改为mv） 及 定时清除文件"></a>18、rm命令的修改（改为mv） 及 定时清除文件</h3><p>rm更改<br>a、创建回收站，存放删除的文件<br>b、创建mv脚本文件<br>c、在bashrc将rm捕获并改为调用mv脚本<br>d、定时清除回收站的文件</p>
+<h3 id="19、检索locate"><a href="#19、检索locate" class="headerlink" title="19、检索locate"></a>19、检索locate</h3><p>locate速度很快，是因为有一个检索库，所以用之前最好updatedb下</p>
+<h3 id="20、邮件，广播等"><a href="#20、邮件，广播等" class="headerlink" title="20、邮件，广播等"></a>20、邮件，广播等</h3><p>w: 查看在线账户<br>wall: 群发消息<br>write: 个人私发<br>mail： 邮件发送</p>
+<h3 id="21、VMware-Tools安装"><a href="#21、VMware-Tools安装" class="headerlink" title="21、VMware Tools安装"></a>21、VMware Tools安装</h3><p>参考：<a href="http://www.epinv.com/post/5217.html" target="_blank" rel="noopener">http://www.epinv.com/post/5217.html</a></p>
+<p>虚拟机-安装VMware Tools</p>
+<blockquote>
+<p>$ mkdir /media/mnt    #新建挂载目录<br>$ mount /dev/cdrom    /media/mnt/      #挂载VMware Tools安装盘到/media/mnt/目录</p>
+</blockquote>
+<p>可以移动到安装目录在解压安装</p>
+<blockquote>
+<p>$  tar zxvf VMwareTools-9.6.2-1688356.tar.gz #解压<br>$ ./vmware-install.pl  #安装</p>
+</blockquote>
+<p>成功后重启服务器</p>
+<h3 id="22、系统监控"><a href="#22、系统监控" class="headerlink" title="22、系统监控"></a>22、系统监控</h3><p>空间大小</p>
+<blockquote>
+<p>$ du -sm ./logs/   #s:指定的目录，m：按照MB来显示大小</p>
+</blockquote>
+<p>日志ERROR高亮</p>
+<blockquote>
+<p>$ tail -f xxx.log | perl -pe ‘s/(ERROR)/\e[1;31m$1\e[0m/g’</p>
+</blockquote>
+<h3 id="23、集群网络基本配置"><a href="#23、集群网络基本配置" class="headerlink" title="23、集群网络基本配置"></a>23、集群网络基本配置</h3><p>环境：centos 7</p>
+<p>设置静态ip(NAT模式)<br>修改配置文件<br>/etc/sysconfig/network-scripts/ifcfg-eno16777736<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BOOTPROTO=static #默认dhcp，改为静态分配</span><br><span class="line">ONBOOT=yes  #自启动，默认no</span><br><span class="line">IPADDR=192.168.118.129   #ip地址，其中192.168.118和NAT模式的子网IP相同 </span><br><span class="line">GATEWAY=192.168.118.2   #网关，和NAT模式设置的网关相同</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">DNS1=192.168.118.2     #和网关相同 或是 114.114.114.114（电信的DNS）或是223.5.5.5（阿里），可在NAT模式菜单中修改</span><br></pre></td></tr></table></figure></p>
+<p>重启ok, ping百度测试</p>
+<blockquote>
+<p>$ service network start</p>
+</blockquote>
+<h3 id="24、集群资源共享"><a href="#24、集群资源共享" class="headerlink" title="24、集群资源共享"></a>24、集群资源共享</h3><p>采用scp传送，之前需要准备ssh免密登录<br>scp -r 源文件夹  username@ip(或者映射名):目标文件夹<br>-r：传输文件夹</p>
+<h3 id="25、profile与bashrc区别"><a href="#25、profile与bashrc区别" class="headerlink" title="25、profile与bashrc区别"></a>25、profile与bashrc区别</h3><p>/etc/profile与/etc/bashrc的区别<br>profile：登录会读取<br>bashrc：每次执行bash会读取</p>
+<p>前一个主要用来设置一些系统变量,比如JAVA_HOME等等，后面一个主要用来保存一些bash的设置。</p>
+<ul>
+<li><p>/etc/profile：此文件为系统的每个用户设置环境信息,当用户第一次登录时，该文件被执行。<br>并从/etc/profile.d目录的配置文件中搜集shell的设置。</p>
+</li>
+<li><p>/etc/bashrc：为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取。</p>
+</li>
+<li>~/.bash_profile：每个用户都可使用该文件输入专用于自己使用的shell信息，当用户登录时该文件仅仅执行一次。默认情况下，他设置一些环境变量,执行用户的.bashrc文件。</li>
+<li>~/.bashrc：该文件包含专用于你的bash shell的bash信息,当登录时以及每次打开新的shell时，该文件被读取。</li>
+<li>~/.bash_logout：当每次退出系统(退出bash shell)时，执行该文件。</li>
+</ul>
+<p>/etc/下的很多文件都是系统级别的<br>比如crontab、bashrc、profile（相当于全局）<br>而这些文件 每个用户也会 单独拥有</p>
+<h3 id="26、定时任务crontab"><a href="#26、定时任务crontab" class="headerlink" title="26、定时任务crontab"></a>26、定时任务crontab</h3><p>用户级别：</p>
+<blockquote>
+<p>$ crontab -e #编辑crontab定时文件<br>$ crontab -l #查看明细列表（不包括系统级别的）<br>$ service crond restart #重启crontab的服务</p>
+</blockquote>
+<p>系统级别：</p>
+<blockquote>
+<p>$ /etc/crontab #注意格式，需要添加指定用户</p>
+</blockquote>
+<p>所有的crontab的执行过程 都可以在 /var/log/cron 查看<br>(如果任务执行了，没有结果，多注意权限、任务本身等等)</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>北辰不落雪</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2017/04/26/Linux初阶/" title="linux初级">http://yoursite.com/2017/04/26/Linux初阶/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/09/docker基础/" rel="next" title="docker基础">
+                <i class="fa fa-chevron-left"></i> docker基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/07/跨N库分页/" rel="prev" title="跨N库分页">
+                跨N库分页 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/polaris-images/avatar/avatar.png" alt="北辰不落雪">
+            
+              <p class="site-author-name" itemprop="name">北辰不落雪</p>
+              <div class="site-description motion-element" itemprop="description">人生如茶，<br>初识饮，不念卿，<br>细细品，才觉情。</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/polarisNoSnow" title="GitHub &rarr; https://github.com/polarisNoSnow" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:787225863@qq.com" title="E-Mail &rarr; mailto:787225863@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#linux学习笔记"><span class="nav-number">1.</span> <span class="nav-text">linux学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QA"><span class="nav-number">1.2.</span> <span class="nav-text">QA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件复制信息丢失"><span class="nav-number">1.2.1.</span> <span class="nav-text">文件复制信息丢失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖缺失"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装依赖缺失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令缺失"><span class="nav-number">1.2.3.</span> <span class="nav-text">指令缺失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#阿里云远程登录问题"><span class="nav-number">1.2.4.</span> <span class="nav-text">阿里云远程登录问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题一"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">问题一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题2"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">问题2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程问题"><span class="nav-number">1.2.5.</span> <span class="nav-text">远程问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟机网络切换"><span class="nav-number">1.2.6.</span> <span class="nav-text">虚拟机网络切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常识"><span class="nav-number">1.3.</span> <span class="nav-text">常识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、依赖"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、解压文件"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、解压文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、删除"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、jdk环境"><span class="nav-number">1.3.4.</span> <span class="nav-text">4、jdk环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、查询安装了哪些jdk"><span class="nav-number">1.3.5.</span> <span class="nav-text">5、查询安装了哪些jdk</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、卸载相应jdk版本"><span class="nav-number">1.3.6.</span> <span class="nav-text">6、卸载相应jdk版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、文件属性"><span class="nav-number">1.3.7.</span> <span class="nav-text">7、文件属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、网络下载"><span class="nav-number">1.3.8.</span> <span class="nav-text">8、网络下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、sudoers"><span class="nav-number">1.3.9.</span> <span class="nav-text">9、sudoers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、开放端口"><span class="nav-number">1.3.10.</span> <span class="nav-text">10、开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、vi编辑器"><span class="nav-number">1.3.11.</span> <span class="nav-text">11、vi编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、epel-release"><span class="nav-number">1.3.12.</span> <span class="nav-text">12、epel-release</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、进程操作"><span class="nav-number">1.3.13.</span> <span class="nav-text">13、进程操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、系统版本"><span class="nav-number">1.3.14.</span> <span class="nav-text">14、系统版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、查看端口占用"><span class="nav-number">1.3.15.</span> <span class="nav-text">15、查看端口占用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、golang安装"><span class="nav-number">1.3.16.</span> <span class="nav-text">16、golang安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、设置tomcat的https"><span class="nav-number">1.3.17.</span> <span class="nav-text">17、设置tomcat的https</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18、rm命令的修改（改为mv）-及-定时清除文件"><span class="nav-number">1.3.18.</span> <span class="nav-text">18、rm命令的修改（改为mv） 及 定时清除文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19、检索locate"><span class="nav-number">1.3.19.</span> <span class="nav-text">19、检索locate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20、邮件，广播等"><span class="nav-number">1.3.20.</span> <span class="nav-text">20、邮件，广播等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21、VMware-Tools安装"><span class="nav-number">1.3.21.</span> <span class="nav-text">21、VMware Tools安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22、系统监控"><span class="nav-number">1.3.22.</span> <span class="nav-text">22、系统监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23、集群网络基本配置"><span class="nav-number">1.3.23.</span> <span class="nav-text">23、集群网络基本配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24、集群资源共享"><span class="nav-number">1.3.24.</span> <span class="nav-text">24、集群资源共享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25、profile与bashrc区别"><span class="nav-number">1.3.25.</span> <span class="nav-text">25、profile与bashrc区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26、定时任务crontab"><span class="nav-number">1.3.26.</span> <span class="nav-text">26、定时任务crontab</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">北辰不落雪</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://polaris.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2017/04/26/Linux初阶/";
+    this.page.identifier = "2017/04/26/Linux初阶/";
+    this.page.title = 'linux初级';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://polaris.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/haru01.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>
