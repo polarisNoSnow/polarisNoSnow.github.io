@@ -108,12 +108,13 @@
 <meta property="og:site_name" content="星辰阁">
 <meta property="og:description" content="技术面试问答部分参考：https://snailclimb.top/JavaGuide Spring说一说 IOC和 AOP IOC  控制反转：基于依赖倒置原则的一种解耦的设计思想，可通过第三方容器Spring IOC容器实现，最常见的方式叫做依赖注入（依赖注入就是将实例变量传入到一个对象中去）。  AOP  面向切面编程：AOP思想的实现一般都是基于 代理模式，在JAVA中一般采用JDK动态代">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1017209-5f0382cbe72da521.png?imageMogr2/auto-orient/strip|imageView2/2/w/785/format/webp">
 <meta property="og:image" content="http://images.cnitblog.com/i/426802/201406/232002051747387.jpg">
-<meta property="og:updated_time" content="2019-08-27T06:42:10.357Z">
+<meta property="og:updated_time" content="2019-12-09T15:10:11.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="技术面试问答">
 <meta name="twitter:description" content="技术面试问答部分参考：https://snailclimb.top/JavaGuide Spring说一说 IOC和 AOP IOC  控制反转：基于依赖倒置原则的一种解耦的设计思想，可通过第三方容器Spring IOC容器实现，最常见的方式叫做依赖注入（依赖注入就是将实例变量传入到一个对象中去）。  AOP  面向切面编程：AOP思想的实现一般都是基于 代理模式，在JAVA中一般采用JDK动态代">
-<meta name="twitter:image" content="http://images.cnitblog.com/i/426802/201406/232002051747387.jpg">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1017209-5f0382cbe72da521.png?imageMogr2/auto-orient/strip|imageView2/2/w/785/format/webp">
 
 
 
@@ -269,7 +270,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">28</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">31</span></a>
 
   </li>
         
@@ -307,7 +308,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
 
   </li>
 
@@ -419,7 +420,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-27 14:42:10" itemprop="dateModified" datetime="2019-08-27T14:42:10+08:00">2019-08-27</time>
+                <time title="修改时间：2019-12-09 23:10:11" itemprop="dateModified" datetime="2019-12-09T23:10:11+08:00">2019-12-09</time>
               
             
           </span>
@@ -446,19 +447,6 @@
 
           
             
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/07/26/技术面试问答/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/26/技术面试问答/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -556,6 +544,7 @@
 </li>
 </ul>
 <h3 id="Redis持久化方式"><a href="#Redis持久化方式" class="headerlink" title="Redis持久化方式"></a>Redis持久化方式</h3><p>RDB： 快照形式  （定期将当前时刻的数据保存磁盘中）会产生一个dump.rdb文<br>AOF：append only file  (所有对redis的操作命令记录在aof文件中)，恢复数据，重新执行一遍即可。</p>
+<h3 id="Redis中的String"><a href="#Redis中的String" class="headerlink" title="Redis中的String"></a>Redis中的String</h3><p>Redis底层采用的是C语言编写，但是它并没有直接使用C语言的字符串，而是采用了自己定义的SDS 数据类型。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span>&#123;</span></span><br><span class="line">     <span class="comment">//记录buf数组中已使用字节的数量=实际的字符串长度</span></span><br><span class="line">     <span class="keyword">int</span> len;</span><br><span class="line">     <span class="comment">//记录buf数组中未使用字节的数量</span></span><br><span class="line">     <span class="keyword">int</span> <span class="built_in">free</span>;</span><br><span class="line">     <span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line">     <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="Redis集群方式"><a href="#Redis集群方式" class="headerlink" title="Redis集群方式"></a>Redis集群方式</h4><p>1.主从复制：分为Master和Slave两个节点，主机会自动将数据同步到从机。<br>复制原理：从机（通信通过发送psync）连接到主机后，将主机发过来的快照（bgsave方式生成的rdb）载入（丢弃旧数据）–<strong>全量复制</strong> ，接着接收并执行来自主机的写命令（非阻塞的方式）–<strong>异步复制</strong>。如果全量复制过程中主从中断，再次连接时会触发<strong>增量复制</strong>，master从backlog中获取丢失的数据发送给slave，其中backlog的数据下标就是是slave返回的psync中的offset.</p>
 <p>2.哨兵模式：类似于主从，只是主机出现故障时可自动将从机转换为主机等。<br>哨兵原理：每个Sentinel（哨兵）进程以每秒一次的频率向集群的主机、从机及其他哨兵进程发送ping命令，如果主机超过回复时间，则标记<strong>主观下线</strong>。此时所有哨兵以每秒的频率确认此台主机主观下线，当足够的哨兵确认后，则标记此主机<strong>客观下线</strong>。之后向对应的从机发送info命令的频率改为一秒（之前是10秒），从机改为主机。（之前若是少数通过或者主机应答，则清除对应的标记状态）</p>
 <p>3.Redis-Cluster集群：<br>之前的模式都是存相同的数据，这种集群方式类似于分片，每台主节点上都存储不同的内容。所有的redis节点彼此互联(PING-PONG机制)，内部使用二进制协议优化传输速度和带宽。<br>每个节点包含：slot槽（0-16383）和cluster，前者用于决定当前节点包含的取值范围，后者用于管理集群。每个节点包含不同的哈希槽，通过算法计算数据存放位置。理论上只需要链接一个节点即可查询所以数据。<br>另外集群引入主从模式，保证高可用。<br>前公司采用三主三从的方式搭建的redis集群。</p>
@@ -705,6 +694,11 @@
 <p>悲观锁</p>
 <p>自旋锁：线程一直在尝试获取锁。</p>
 <p>非自旋锁：线程阻塞，待锁释放之后重新恢复获取。</p>
+<p>偏向锁：</p>
+<p>轻量级锁：</p>
+<p>重量级锁：</p>
+<p>可重入锁：</p>
+<p>对于资源竞争严重（线程冲突严重）的情况，CAS自旋的概率会比较大，从而浪费更多的CPU资源，效率低于synchronized。</p>
 <h3 id="volatile-amp-synschonized"><a href="#volatile-amp-synschonized" class="headerlink" title="volatile &amp; synschonized"></a>volatile &amp; synschonized</h3><p><strong>volatile</strong></p>
 <ol>
 <li>可见性，对于一个该变量的读，一定能看到读之前最后的写入。</li>
@@ -719,7 +713,7 @@
 <li>volatile关键字主要用于解决变量在多个线程之间的可见性，而 synchronized关键字解决的是多个线程之间访问资源的同步性</li>
 <li></li>
 </ul>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>基于Object[]数组实现，</p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>基于Object[]数组实现，默认初始化为10。线程不安全</p>
 <p><strong>扩容</strong>：int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)，相当于原来1.5倍。</p>
 <p><strong>新增元素</strong>：</p>
 <ol>
@@ -730,9 +724,43 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.arraycopy(elementData, index, elementData, index + 1,size - index);</span><br></pre></td></tr></table></figure>
 <p><strong>删除元素</strong>：同样采用System.arraycopy复制操作，指定值删除的时候循环匹配查找下标，再删除。<br><strong>查询元素</strong>：采用数组实现，天然支持下标快速访问。</p>
-<h3 id="linkedlist"><a href="#linkedlist" class="headerlink" title="linkedlist"></a>linkedlist</h3><p>基于双向链表实现，单元节点Node包含，数据、prev、next三个属性。增删改查都是基于节点。</p>
-<h3 id="HashMap-amp-ConcurrentHashMap"><a href="#HashMap-amp-ConcurrentHashMap" class="headerlink" title="HashMap&amp;ConcurrentHashMap"></a>HashMap&amp;ConcurrentHashMap</h3><p>HashMap基于</p>
-<p><strong>扩容</strong>：HashMap 默认的初始化大小为16。之后每次扩充，容量变为原来的2倍</p>
+<h3 id="linkedlist"><a href="#linkedlist" class="headerlink" title="linkedlist"></a>linkedlist</h3><p>基于双向链表实现，单元节点Node包含，数据、prev、next三个属性。线程不安全</p>
+<p><strong>新增元素</strong>：</p>
+<ol>
+<li><p>不指定位置，末尾追加</p>
+</li>
+<li><p>指定位置，则先查找链表结点信息使用方法node(int index)找到节点，修改相关节点信息。时间复杂度O(n)。</p>
+</li>
+</ol>
+<p><strong>删除元素</strong>：指定位置通过查询元素删除；指定值，则从头节点循环匹配，然后删除。节点删除unlink()方法</p>
+<p><strong>查询元素</strong>：使用node(int index)方法。基本思路如果index &lt; (size &gt;&gt; 1)，也就是下标在前半部分，从链表首部开始循环查找；否则从尾部</p>
+<p>其中modCount参数，当链表被修改时会自增，可以防止迭代器创建之后，对表进行了修改。详情查看AbstractList中内部类ListItr的checkForComodification方法。</p>
+<p><strong>LinkedList 采用链表存储，所以插入，删除元素时间复杂度不受元素位置的影响，都是近似 O（1）而数组需要迁移数据近似 O（n）。但是数组支持根据下标快速访问</strong></p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>HashMap基于数组+链表的方式储存（jdk1.8在链表过长的时候8，转换为红黑树，提高检索效率），数据结构如下图，部分代码参考jdk1.7+1.8。<br><img src="https://upload-images.jianshu.io/upload_images/1017209-5f0382cbe72da521.png?imageMogr2/auto-orient/strip|imageView2/2/w/785/format/webp" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">//默认初始容量16</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>; <span class="comment">//默认加载因子，对空间和时间效率的一个平衡选择</span></span><br><span class="line"><span class="keyword">transient</span> Node&lt;K,V&gt;[] table; <span class="comment">//储存数据的节点数组，每个node节点包含hash,key,value,next属性</span></span><br><span class="line"><span class="keyword">int</span> threshold; <span class="comment">//扩容阀值，所能容纳的最大数据量超过这个数目就重新resize(扩容)，threshold = capacity(容量) * loadFactor(加载因子)</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> size; <span class="comment">//总节点个数</span></span><br></pre></td></tr></table></figure>
+<p><strong>如何确定数据下标</strong></p>
+<ol>
+<li>计算key的hash值，(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)，高低位异或运算，为了当容量较小的时候高位也能参与运算。</li>
+<li>根据hash值对容量取余，h &amp; (length-1)，等于h % length，位运算效率更好。</li>
+</ol>
+<p><em>初始容量必须是 2 的幂次方，因为在平均分配的时候会取余操作，h &amp; (length -1) == h % length，只有当length是 2 的幂次方时，length -1才能保证低位都为1，相当于取余操作。</em></p>
+<p><strong>扩容</strong>：resize()方法，HashMap 默认的初始化大小为16。之后每次扩充，容量变为原来的2倍（oldCap &lt;&lt; 1），扩容阀值变为原来两倍。最大容量1&lt;&lt;30超过就让其碰撞不再扩容。</p>
+<p>jdk1.7：先遍历数组，其中遍历链表，重新计算数据index下标</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = indexFor(e.hash, newCapacity); <span class="comment">//重新计算元素在新数组中的位置</span></span><br><span class="line">e.next = newTable[i]; <span class="comment">//在遍历链表其他节点的时候，采用头插法，链表元素最终会倒置</span></span><br><span class="line">newTable[i] = e;      <span class="comment">//将元素放在新数组上</span></span><br></pre></td></tr></table></figure>
+<p>jdk1.8：1.8稍微复杂一点，链表的基本思路相同，但是不需要重新计算hash，因为容量是按照2的幂次方扩展的，所以重新计算的hash不是原位置就是原位置+oldCap(老容量)。如18%16=2，18%32=18，实际上就看高位是1还是0，0就是原位置，1就是 +oldCap。红黑树的话参考HashMap.TreeNode.spli方法。</p>
+<p><strong>新增元素</strong>：通过h &amp; (length-1)获得数据节点，如果本节点为空直接新建节点；节点不为空（如果key相同直接覆盖）则循环链表直到链表尾部添加（如果是红黑树直接红黑树操作），如果key相同直接覆盖，当链表长度超过8则转换为红黑树结构（jdk1.8）。</p>
+<p><strong>删除元素</strong>：查询方法与查询元素类似，定位到数据节点后，如果是红黑树则采用红黑树删除的方法；否则将当前节点的前一节点的next节点指向当前节点的next节点。</p>
+<p><strong>查找元素</strong>：通过h &amp; (length-1)确定数据桶位置，然后对比key，如果相同则直接返回；不同则循环遍历链表；如果是红黑树则采用红黑树的查询（hash对比，左右子节点递归调用，如果为当前节点对比key，ok则直接返回）。</p>
+<p><em>为什么会1.8使用尾插法，关于扩容头插法会引发逆序 ， 链表死循环（多线程下）</em></p>
+<p><em>自动扩容把链表转成红黑树的数据结构来把时间复杂度从O（n）变成O（logN）</em></p>
+<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><p>1.7：分段锁</p>
+<p>1.8：用synchronized锁住数组上的节点（或者说链表头、树根）。</p>
+<p><strong>集合框架</strong>：Collection（List + Set） + Map</p>
+<p>HashTable内部的方法基本都经过<code>synchronized</code> 修饰，线程安全，但是效率低下现在基本被淘汰。</p>
+<p>HashSet底层采用HashMap实现大部分的方法都是调用的HashMap的方法，不允许重复是因为其存储的对象作为HashMap的key，value都是一个static final Object。</p>
+<p>键值对存储时：用Map，需要排序用TreeMap，不需要选HashMap，保证线程安全ConcurrentHashMap</p>
+<p>保证元素唯一时：用Set，如TreeSet或HashSet</p>
+<p>只是简单的存储同类数据：用List，需要频繁查找用ArrayList，需要频繁改动数据用LinkedList。</p>
 <h3 id="AtomicInteger-amp-AtomicStampedReference"><a href="#AtomicInteger-amp-AtomicStampedReference" class="headerlink" title="AtomicInteger &amp; AtomicStampedReference"></a>AtomicInteger &amp; AtomicStampedReference</h3><p><strong>AtomicInteger</strong>：采用CAS（Compare And Swap），CAS机制当中使用了3个基本操作数：内存地址V，旧的预期值A，要修改的新值B。</p>
 <p>存在：ABA问题，即基于CAS方案时，可能存在其他线程从A -&gt; B -&gt; A改变，但是当前线程对比发现还是A，在部分情况下存在问题。</p>
 <p>解决方案：各种乐观锁一般基于版本戳version解决</p>
@@ -976,10 +1004,7 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-      </div>
+    <div class="comments" id="gitalk-container">
     </div>
 
   
@@ -1031,7 +1056,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1127,7 +1152,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">27</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1201,7 +1232,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#技术面试问答"><span class="nav-number">1.</span> <span class="nav-text">技术面试问答</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.1.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说一说-IOC和-AOP"><span class="nav-number">1.1.1.</span> <span class="nav-text">说一说 IOC和 AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC工作流程"><span class="nav-number">1.1.2.</span> <span class="nav-text">SpringMVC工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-AOP和JDK动态代理（代理模式）"><span class="nav-number">1.1.3.</span> <span class="nav-text">Spring AOP和JDK动态代理（代理模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK动态代理"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">JDK动态代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CGLIB"><span class="nav-number">1.1.4.</span> <span class="nav-text">CGLIB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Spring AOP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring循环依赖"><span class="nav-number">1.1.5.</span> <span class="nav-text">Spring循环依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">1.2.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">单例模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">1.3.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存相关问题"><span class="nav-number">1.3.1.</span> <span class="nav-text">缓存相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis持久化方式"><span class="nav-number">1.3.2.</span> <span class="nav-text">Redis持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis集群方式"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Redis集群方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper"><span class="nav-number">1.4.</span> <span class="nav-text">zookeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zk选举机制"><span class="nav-number">1.4.1.</span> <span class="nav-text">zk选举机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zk分布式锁"><span class="nav-number">1.4.2.</span> <span class="nav-text">zk分布式锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java进阶"><span class="nav-number">1.5.</span> <span class="nav-text">Java进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载过程"><span class="nav-number">1.5.1.</span> <span class="nav-text">类加载过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象创建过程"><span class="nav-number">1.5.2.</span> <span class="nav-text">对象创建过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM内存模型（JDK1-6）"><span class="nav-number">1.5.3.</span> <span class="nav-text">JVM内存模型（JDK1.6）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量池"><span class="nav-number">1.5.4.</span> <span class="nav-text">常量池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.5.5.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM多线程"><span class="nav-number">1.5.6.</span> <span class="nav-text">JVM多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String字符串"><span class="nav-number">1.5.7.</span> <span class="nav-text">String字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据可见性"><span class="nav-number">1.5.8.</span> <span class="nav-text">数据可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序"><span class="nav-number">1.5.9.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派"><span class="nav-number">1.5.10.</span> <span class="nav-text">双亲委派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java锁机制"><span class="nav-number">1.5.11.</span> <span class="nav-text">Java锁机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-amp-synschonized"><span class="nav-number">1.5.12.</span> <span class="nav-text">volatile &amp; synschonized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.5.13.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linkedlist"><span class="nav-number">1.5.14.</span> <span class="nav-text">linkedlist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap-amp-ConcurrentHashMap"><span class="nav-number">1.5.15.</span> <span class="nav-text">HashMap&amp;ConcurrentHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AtomicInteger-amp-AtomicStampedReference"><span class="nav-number">1.5.16.</span> <span class="nav-text">AtomicInteger &amp; AtomicStampedReference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java多线程"><span class="nav-number">1.5.17.</span> <span class="nav-text">Java多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-方法和wait-方法简单对比"><span class="nav-number">1.5.17.1.</span> <span class="nav-text">sleep()方法和wait()方法简单对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用多线程常见的三种方式"><span class="nav-number">1.5.17.2.</span> <span class="nav-text">使用多线程常见的三种方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.5.18.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常分类及事务异常捕获"><span class="nav-number">1.5.19.</span> <span class="nav-text">异常分类及事务异常捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器-amp-拦截器"><span class="nav-number">1.5.20.</span> <span class="nav-text">过滤器&amp;拦截器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式架构-amp-微服务"><span class="nav-number">1.6.</span> <span class="nav-text">分布式架构&amp;微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#谈谈分布式架构-amp-微服务"><span class="nav-number">1.6.1.</span> <span class="nav-text">谈谈分布式架构&amp;微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式一致性问题"><span class="nav-number">1.6.2.</span> <span class="nav-text">分布式一致性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式锁"><span class="nav-number">1.6.3.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脑裂（brain-split）"><span class="nav-number">1.6.4.</span> <span class="nav-text">脑裂（brain-split）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dubbo"><span class="nav-number">1.7.</span> <span class="nav-text">dubbo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dubbo的工作原理"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">dubbo的工作原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.8.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快排算法"><span class="nav-number">1.8.1.</span> <span class="nav-text">快排算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#topK问题"><span class="nav-number">1.8.2.</span> <span class="nav-text">topK问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">1.9.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql简介"><span class="nav-number">1.9.1.</span> <span class="nav-text">Mysql简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎"><span class="nav-number">1.9.2.</span> <span class="nav-text">存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql索引"><span class="nav-number">1.9.3.</span> <span class="nav-text">Mysql索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚簇索引-amp-非聚簇索引"><span class="nav-number">1.9.4.</span> <span class="nav-text">聚簇索引&amp;非聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的ACID"><span class="nav-number">1.9.5.</span> <span class="nav-text">事务的ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库隔离机制"><span class="nav-number">1.9.6.</span> <span class="nav-text">数据库隔离机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB锁"><span class="nav-number">1.9.7.</span> <span class="nav-text">InnoDB锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁的类型"><span class="nav-number">1.9.8.</span> <span class="nav-text">锁的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分表分库Sharding-JDBC"><span class="nav-number">1.9.9.</span> <span class="nav-text">分表分库Sharding-JDBC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">1.10.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内核态-amp-用户态"><span class="nav-number">1.10.1.</span> <span class="nav-text">内核态&amp;用户态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buffer缓冲区"><span class="nav-number">1.10.2.</span> <span class="nav-text">buffer缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">1.11.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO、NIO、AIO"><span class="nav-number">1.11.1.</span> <span class="nav-text">BIO、NIO、AIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO多路复用的机制"><span class="nav-number">1.11.2.</span> <span class="nav-text">IO多路复用的机制</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#技术面试问答"><span class="nav-number">1.</span> <span class="nav-text">技术面试问答</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">1.1.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#说一说-IOC和-AOP"><span class="nav-number">1.1.1.</span> <span class="nav-text">说一说 IOC和 AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC工作流程"><span class="nav-number">1.1.2.</span> <span class="nav-text">SpringMVC工作流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-AOP和JDK动态代理（代理模式）"><span class="nav-number">1.1.3.</span> <span class="nav-text">Spring AOP和JDK动态代理（代理模式）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK动态代理"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">JDK动态代理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CGLIB"><span class="nav-number">1.1.4.</span> <span class="nav-text">CGLIB</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-AOP"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Spring AOP</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring循环依赖"><span class="nav-number">1.1.5.</span> <span class="nav-text">Spring循环依赖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式"><span class="nav-number">1.2.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式"><span class="nav-number">1.2.1.</span> <span class="nav-text">单例模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis"><span class="nav-number">1.3.</span> <span class="nav-text">Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存相关问题"><span class="nav-number">1.3.1.</span> <span class="nav-text">缓存相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis持久化方式"><span class="nav-number">1.3.2.</span> <span class="nav-text">Redis持久化方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis中的String"><span class="nav-number">1.3.3.</span> <span class="nav-text">Redis中的String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Redis集群方式"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">Redis集群方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zookeeper"><span class="nav-number">1.4.</span> <span class="nav-text">zookeeper</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#zk选举机制"><span class="nav-number">1.4.1.</span> <span class="nav-text">zk选举机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zk分布式锁"><span class="nav-number">1.4.2.</span> <span class="nav-text">zk分布式锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java进阶"><span class="nav-number">1.5.</span> <span class="nav-text">Java进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载过程"><span class="nav-number">1.5.1.</span> <span class="nav-text">类加载过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象创建过程"><span class="nav-number">1.5.2.</span> <span class="nav-text">对象创建过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM内存模型（JDK1-6）"><span class="nav-number">1.5.3.</span> <span class="nav-text">JVM内存模型（JDK1.6）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量池"><span class="nav-number">1.5.4.</span> <span class="nav-text">常量池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.5.5.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM多线程"><span class="nav-number">1.5.6.</span> <span class="nav-text">JVM多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String字符串"><span class="nav-number">1.5.7.</span> <span class="nav-text">String字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据可见性"><span class="nav-number">1.5.8.</span> <span class="nav-text">数据可见性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序"><span class="nav-number">1.5.9.</span> <span class="nav-text">重排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双亲委派"><span class="nav-number">1.5.10.</span> <span class="nav-text">双亲委派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java锁机制"><span class="nav-number">1.5.11.</span> <span class="nav-text">Java锁机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-amp-synschonized"><span class="nav-number">1.5.12.</span> <span class="nav-text">volatile &amp; synschonized</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.5.13.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linkedlist"><span class="nav-number">1.5.14.</span> <span class="nav-text">linkedlist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">1.5.15.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">1.5.16.</span> <span class="nav-text">ConcurrentHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AtomicInteger-amp-AtomicStampedReference"><span class="nav-number">1.5.17.</span> <span class="nav-text">AtomicInteger &amp; AtomicStampedReference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java多线程"><span class="nav-number">1.5.18.</span> <span class="nav-text">Java多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sleep-方法和wait-方法简单对比"><span class="nav-number">1.5.18.1.</span> <span class="nav-text">sleep()方法和wait()方法简单对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用多线程常见的三种方式"><span class="nav-number">1.5.18.2.</span> <span class="nav-text">使用多线程常见的三种方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">1.5.19.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常分类及事务异常捕获"><span class="nav-number">1.5.20.</span> <span class="nav-text">异常分类及事务异常捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器-amp-拦截器"><span class="nav-number">1.5.21.</span> <span class="nav-text">过滤器&amp;拦截器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式架构-amp-微服务"><span class="nav-number">1.6.</span> <span class="nav-text">分布式架构&amp;微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#谈谈分布式架构-amp-微服务"><span class="nav-number">1.6.1.</span> <span class="nav-text">谈谈分布式架构&amp;微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式一致性问题"><span class="nav-number">1.6.2.</span> <span class="nav-text">分布式一致性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式锁"><span class="nav-number">1.6.3.</span> <span class="nav-text">分布式锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脑裂（brain-split）"><span class="nav-number">1.6.4.</span> <span class="nav-text">脑裂（brain-split）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dubbo"><span class="nav-number">1.7.</span> <span class="nav-text">dubbo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dubbo的工作原理"><span class="nav-number">1.7.0.1.</span> <span class="nav-text">dubbo的工作原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法"><span class="nav-number">1.8.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快排算法"><span class="nav-number">1.8.1.</span> <span class="nav-text">快排算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#topK问题"><span class="nav-number">1.8.2.</span> <span class="nav-text">topK问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">1.9.</span> <span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql简介"><span class="nav-number">1.9.1.</span> <span class="nav-text">Mysql简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎"><span class="nav-number">1.9.2.</span> <span class="nav-text">存储引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mysql索引"><span class="nav-number">1.9.3.</span> <span class="nav-text">Mysql索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚簇索引-amp-非聚簇索引"><span class="nav-number">1.9.4.</span> <span class="nav-text">聚簇索引&amp;非聚簇索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务的ACID"><span class="nav-number">1.9.5.</span> <span class="nav-text">事务的ACID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库隔离机制"><span class="nav-number">1.9.6.</span> <span class="nav-text">数据库隔离机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#InnoDB锁"><span class="nav-number">1.9.7.</span> <span class="nav-text">InnoDB锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁的类型"><span class="nav-number">1.9.8.</span> <span class="nav-text">锁的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分表分库Sharding-JDBC"><span class="nav-number">1.9.9.</span> <span class="nav-text">分表分库Sharding-JDBC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">1.10.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内核态-amp-用户态"><span class="nav-number">1.10.1.</span> <span class="nav-text">内核态&amp;用户态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#buffer缓冲区"><span class="nav-number">1.10.2.</span> <span class="nav-text">buffer缓冲区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">1.11.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIO、NIO、AIO"><span class="nav-number">1.11.1.</span> <span class="nav-text">BIO、NIO、AIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IO多路复用的机制"><span class="nav-number">1.11.2.</span> <span class="nav-text">IO多路复用的机制</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1355,30 +1386,36 @@
   
 
   
-  
-  <script id="dsq-count-scr" src="https://polaris.disqus.com/count.js" async></script>
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
 
 <script>
-  var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2019/07/26/技术面试问答/";
-    this.page.identifier = "2019/07/26/技术面试问答/";
-    this.page.title = '技术面试问答';
-    };
-  function loadComments() {
-    var d = document, s = d.createElement('script');
-    s.src = 'https://polaris.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', '' + +new Date());
-    (d.head || d.body).appendChild(s);
-  }
-  
-    loadComments();
-  
+  var gitalk = new Gitalk({
+    clientID: 'c6adffa9f2be198677d8',
+    clientSecret: '86c7165b1e6451ec0a2d2fedb2a14ad5b84622e6',
+    repo: 'polarisnosnow.github.io',
+    owner: 'polarisnosnow',
+    admin: ['polarisnosnow'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
 </script>
-
-
-
-
 
   
 
