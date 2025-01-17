@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>宝哥传奇下载页</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://chentucq.oss-cn-guangzhou.aliyuncs.com/logo.ico">
+  <!-- <link rel="stylesheet" href="https://dalichuanqi.oss-cn-hangzhou.aliyuncs.com/css/jquery.modal.min.css" /> -->
+  <meta name="keywords" content="宝哥复古,宝哥传奇游戏,复古三职业,宝哥传奇游戏官网,宝哥传奇游戏官方网站,传奇手游,传奇,传奇开服表,传奇发布网,传奇开区,新开传奇,传奇万能登录器,传奇官网">
+  <meta name="discription" content="传奇游戏版本内容的开发与运营，致力于传奇游戏联运以及版本服务的最前沿。在传奇界，我们一直被模仿，从未被超越">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .bg {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .download ul li {
+      border-radius: 40px;
+      background-color: rgb(248, 216, 147);
+      font-weight: 500;
+      color: white;
+      font-size: 16px;
+      list-style: none;
+    }
+
+    .download ul li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 50px;
+      text-decoration: none;
+      color: rgb(86, 19, 14);
+    }
+
+    .icp {
+      position: absolute;
+      bottom: 8px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .icp a {
+      text-decoration: none;
+    }
+
+    /*响应式基本原理*/
+    @media screen and (min-width: 740px) {
+
+      /*大于740px*/
+      .bg {
+        background-image: url("lsehy/banner.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      }
+
+      .download {
+        width: 50%;
+        top: 85%;
+        position: absolute;
+      }
+
+      .download ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    @media screen and (max-width: 740px) {
+
+      /*小于600px时*/
+      .bg {
+        background-image: url("lsehy/banner2.jpg");
+        background-size: 90% auto;
+        background-position-x: center;
+        background-position-y: 50px;
+        background-repeat: no-repeat;
+      }
+
+      .download ul li {
+        margin-top: 30px;
+      }
+
+      .download {
+        position: absolute;
+        top: 35%;
+      }
+
+      .pc_link {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<div class="main">
+  <div class="bg">
+    <div class="download">
+      <ul>
+        <li>
+          <a href="https://chentucq.oss-cn-guangzhou.aliyuncs.com/lsehy/宝哥传奇.apk">
+            <span>安卓版本下载</span>
+          </a>
+        </li>
+		<li class="pc_link">
+          <a href="https://chentucq.oss-cn-guangzhou.aliyuncs.com/lsehy/宝哥传奇.zip"><span>PC版本下载解压使用</span></a>
+        </li>
+        <li>
+          <a href="http://www.996box.com/" target="_blank" >
+              <span>IOS版本996盒子搜索【宝哥传奇】</span>
+          </a>
+        </li> 
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
